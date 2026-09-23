@@ -2,1413 +2,3804 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>DiGitalna | دورات وخدمات رقمية</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#765640">
+<title>DiGitalna | تعلّم • خدمات • فرص</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
+
 :root{
- --brown:#765640;
- --dark:#563d2c;
- --beige:#f3e9df;
- --light:#faf6f1;
- --text:#292522;
- --muted:#77706a;
- --line:#e9ddd1;
- --white:#fff;
- --shadow:0 18px 55px rgba(75,50,32,.10);
+  --brown:#765640;
+  --dark:#503a2b;
+  --brown2:#92745c;
+  --beige:#f2e7dc;
+  --cream:#fffdf9;
+  --white:#ffffff;
+  --text:#292522;
+  --muted:#77716b;
+  --line:#eadfd5;
+  --soft:#faf5ef;
+  --shadow:0 18px 55px rgba(75,50,32,.09);
+  --shadow2:0 8px 28px rgba(75,50,32,.08);
+  --radius:24px;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
- font-family:Tahoma,Arial,sans-serif;
- background:#fff;
- color:var(--text);
- line-height:1.8;
+  font-family:'Cairo',sans-serif;
+  background:var(--white);
+  color:var(--text);
+  line-height:1.8;
+  overflow-x:hidden;
 }
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
-a{text-decoration:none;color:inherit}
-.container{width:min(1180px,92%);margin:auto}
-section{padding:80px 0}
-.section-head{text-align:center;margin-bottom:45px}
-.section-head span{
- display:inline-block;background:var(--beige);color:var(--brown);
- padding:7px 15px;border-radius:50px;font-size:13px;font-weight:bold;
+
+button,input,select,textarea{
+  font-family:inherit;
 }
-.section-head h2{font-size:35px;margin:12px 0 8px}
-.section-head p{color:var(--muted);max-width:700px;margin:auto}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.container{
+  width:min(1160px,92%);
+  margin:auto;
+}
+
+/* ===== HEADER ===== */
 
 header{
- position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.94);
- backdrop-filter:blur(15px);border-bottom:1px solid var(--line);
-}
-.nav{
- height:75px;display:flex;align-items:center;justify-content:space-between;
-}
-.logo{font-size:27px;font-weight:900;color:var(--brown);letter-spacing:.5px}
-.menu-btn{
- width:45px;height:45px;border:1px solid var(--line);background:white;
- border-radius:13px;font-size:22px;color:var(--brown)
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid rgba(234,223,213,.7);
 }
 
-.side{
- position:fixed;top:0;right:-330px;width:310px;height:100vh;background:white;
- z-index:2000;padding:25px;box-shadow:var(--shadow);transition:.35s;
- overflow:auto;
+.nav{
+  height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
 }
-.side.active{right:0}
-.close{font-size:28px;color:var(--brown);border:0;background:none}
-.side h3{margin:20px 0;color:var(--brown)}
-.side a{
- display:block;padding:12px;border-bottom:1px solid #f0e8e0;
+
+.logo{
+  font-size:28px;
+  font-weight:800;
+  letter-spacing:.3px;
+  color:var(--dark);
+  position:relative;
 }
-.overlay{
- position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:1500;
- display:none
+
+.logo .dot{
+  display:inline-flex;
+  width:7px;
+  height:7px;
+  background:var(--brown);
+  border-radius:50%;
+  margin:0 2px 3px;
 }
-.overlay.active{display:block}
+
+.menu-btn{
+  width:45px;
+  height:45px;
+  border:1px solid var(--line);
+  background:var(--white);
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  color:var(--brown);
+  transition:.3s;
+}
+
+.menu-btn:hover{
+  background:var(--beige);
+  transform:translateY(-2px);
+}
+
+.menu-btn svg{
+  width:22px;
+  height:22px;
+}
+
+/* ===== SIDE MENU ===== */
+
+.side-menu{
+  position:fixed;
+  top:0;
+  right:-330px;
+  width:310px;
+  max-width:88%;
+  height:100vh;
+  background:#fff;
+  z-index:2000;
+  box-shadow:-20px 0 60px rgba(50,35,25,.15);
+  padding:25px;
+  transition:.4s cubic-bezier(.2,.8,.2,1);
+}
+
+.side-menu.open{
+  right:0;
+}
+
+.side-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:35px;
+}
+
+.side-title{
+  font-weight:800;
+  font-size:21px;
+  color:var(--dark);
+}
+
+.close-btn{
+  width:42px;
+  height:42px;
+  border:1px solid var(--line);
+  background:var(--soft);
+  border-radius:13px;
+  cursor:pointer;
+  color:var(--brown);
+}
+
+.side-menu a{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:13px 12px;
+  border-radius:13px;
+  color:var(--text);
+  transition:.25s;
+  margin-bottom:4px;
+}
+
+.side-menu a:hover{
+  background:var(--beige);
+  color:var(--brown);
+  transform:translateX(-4px);
+}
+
+.side-menu svg{
+  width:19px;
+  height:19px;
+}
+
+/* ===== HERO ===== */
 
 .hero{
- min-height:650px;display:flex;align-items:center;
- background:linear-gradient(135deg,#fff 60%,#faf3ed);
+  min-height:650px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 85% 25%,rgba(242,231,220,.8),transparent 28%),
+    linear-gradient(180deg,#fff 0%,#fffdf9 100%);
 }
-.hero-grid{
- display:grid;grid-template-columns:1.25fr .75fr;gap:60px;align-items:center;
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:430px;
+  height:430px;
+  border-radius:50%;
+  background:var(--beige);
+  opacity:.42;
+  left:-190px;
+  bottom:-210px;
 }
-.badge{
- display:inline-block;background:var(--beige);color:var(--brown);
- padding:8px 16px;border-radius:30px;font-size:12px;font-weight:bold;
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:750px;
+  animation:fadeUp .9s ease both;
 }
-.hero h1{font-size:55px;line-height:1.25;margin:20px 0}
-.hero h1 strong{color:var(--brown)}
-.hero p{font-size:18px;color:var(--muted);max-width:680px}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+  background:var(--beige);
+  color:var(--brown);
+  border-radius:50px;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+.eyebrow span{
+  width:7px;
+  height:7px;
+  background:var(--brown);
+  border-radius:50%;
+}
+
+.hero h1{
+  font-size:clamp(42px,7vw,72px);
+  line-height:1.12;
+  color:var(--dark);
+  margin-bottom:20px;
+  font-weight:800;
+}
+
+.hero h1 strong{
+  color:var(--brown);
+}
+
+.hero p{
+  font-size:18px;
+  color:var(--muted);
+  max-width:680px;
+  margin-bottom:32px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
 .btn{
- border:0;padding:13px 22px;border-radius:13px;background:var(--brown);
- color:#fff;font-weight:bold;transition:.2s
+  border:0;
+  cursor:pointer;
+  min-height:50px;
+  padding:12px 21px;
+  border-radius:15px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  font-weight:700;
+  transition:.3s;
 }
-.btn:hover{transform:translateY(-2px);opacity:.92}
-.btn.light{background:var(--beige);color:var(--brown)}
-.btn.outline{background:white;color:var(--brown);border:1px solid var(--brown)}
+
+.btn svg{
+  width:19px;
+  height:19px;
+}
+
+.btn-primary{
+  background:var(--brown);
+  color:#fff;
+  box-shadow:0 10px 25px rgba(118,86,64,.18);
+}
+
+.btn-primary:hover{
+  background:var(--dark);
+  transform:translateY(-3px);
+}
+
+.btn-light{
+  background:var(--white);
+  color:var(--brown);
+  border:1px solid var(--line);
+}
+
+.btn-light:hover{
+  background:var(--beige);
+  transform:translateY(-3px);
+}
+
 .hero-card{
- background:white;border:1px solid var(--line);padding:35px;border-radius:30px;
- box-shadow:var(--shadow)
+  position:absolute;
+  left:7%;
+  bottom:90px;
+  width:230px;
+  padding:22px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:25px;
+  box-shadow:var(--shadow);
+  animation:float 4s ease-in-out infinite;
 }
-.hero-card .big{font-size:50px;font-weight:900;color:var(--brown)}
-.hero-card small{color:var(--muted)}
-.mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:25px}
-.mini-stat{background:var(--light);padding:18px;border-radius:16px}
-.mini-stat b{display:block;color:var(--brown);font-size:24px}
+
+.hero-card .mini-icon{
+  width:48px;
+  height:48px;
+  border-radius:16px;
+  background:var(--beige);
+  color:var(--brown);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:12px;
+}
+
+.mini-icon svg{
+  width:24px;
+  height:24px;
+}
+
+.hero-card strong{
+  display:block;
+  color:var(--dark);
+  margin-bottom:3px;
+}
+
+.hero-card span{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* ===== SECTIONS ===== */
+
+section{
+  padding:90px 0;
+}
+
+.section-head{
+  margin-bottom:42px;
+  max-width:720px;
+}
+
+.section-label{
+  color:var(--brown);
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:8px;
+  letter-spacing:.5px;
+}
+
+.section-head h2{
+  font-size:clamp(30px,5vw,43px);
+  color:var(--dark);
+  line-height:1.3;
+  margin-bottom:10px;
+}
+
+.section-head p{
+  color:var(--muted);
+}
+
+/* ===== STATS ===== */
 
 .stats{
- background:var(--dark);color:white;padding:35px 0
+  background:var(--cream);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
 }
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
-.stat{text-align:center}
-.stat b{font-size:31px;display:block}
-.stat span{opacity:.8;font-size:13px}
 
-.cards{
- display:grid;grid-template-columns:repeat(2,1fr);gap:25px
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
 }
-.card{
- background:white;border:1px solid var(--line);border-radius:24px;padding:28px;
- box-shadow:0 8px 30px rgba(70,50,35,.04);position:relative
-}
-.card:hover{box-shadow:var(--shadow)}
-.card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-.tag{
- background:var(--beige);color:var(--brown);padding:6px 11px;border-radius:30px;
- font-size:11px;font-weight:bold
-}
-.price{font-size:25px;color:var(--brown);font-weight:900}
-.card h3{font-size:23px;margin:15px 0 8px}
-.card p{color:var(--muted)}
-.list{list-style:none;margin:18px 0}
-.list li{padding:7px 0;border-bottom:1px dashed var(--line)}
-.list li:before{content:"✓";color:var(--brown);font-weight:bold;margin-left:8px}
 
-.discount{
- margin-top:25px;background:linear-gradient(135deg,var(--beige),#fff);
- border:1px solid var(--line);border-radius:22px;padding:25px;text-align:center
+.stat{
+  text-align:center;
+  padding:25px 15px;
+  border-left:1px solid var(--line);
 }
-.discount h3{color:var(--brown);margin-bottom:5px}
 
-.unavailable{opacity:.75}
-.unavailable .price{font-size:15px}
-.empty-note{text-align:center;color:var(--muted);margin-top:20px}
+.stat:last-child{
+  border-left:0;
+}
+
+.stat strong{
+  display:block;
+  font-size:25px;
+  color:var(--brown);
+}
+
+.stat span{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* ===== COURSES ===== */
+
+.courses{
+  background:#fff;
+}
+
+.course-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px;
+}
+
+.course-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:28px;
+  box-shadow:0 5px 20px rgba(70,45,28,.035);
+  transition:.35s;
+  position:relative;
+  overflow:hidden;
+}
+
+.course-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  width:100%;
+  height:4px;
+  background:linear-gradient(90deg,var(--brown),var(--beige));
+}
+
+.course-card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow);
+}
+
+.course-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.course-icon{
+  width:54px;
+  height:54px;
+  flex:none;
+  background:var(--beige);
+  color:var(--brown);
+  border-radius:17px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.course-icon svg{
+  width:27px;
+  height:27px;
+}
+
+.price{
+  color:var(--brown);
+  font-weight:800;
+  white-space:nowrap;
+  background:var(--soft);
+  border:1px solid var(--line);
+  padding:6px 12px;
+  border-radius:50px;
+  font-size:13px;
+}
+
+.course-card h3{
+  color:var(--dark);
+  font-size:21px;
+  line-height:1.5;
+  margin:18px 0 8px;
+}
+
+.course-description{
+  color:var(--muted);
+  font-size:14px;
+  margin-bottom:20px;
+}
+
+.course-info{
+  border-top:1px solid var(--line);
+  padding-top:17px;
+  margin-top:15px;
+}
+
+.course-info-title{
+  font-weight:800;
+  color:var(--brown);
+  font-size:14px;
+  margin-bottom:8px;
+}
+
+.course-info ul{
+  list-style:none;
+  display:grid;
+  gap:5px;
+}
+
+.course-info li{
+  color:#625b55;
+  font-size:13px;
+  position:relative;
+  padding-right:17px;
+}
+
+.course-info li::before{
+  content:"";
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--brown);
+  position:absolute;
+  right:0;
+  top:10px;
+}
+
+.course-target{
+  margin-top:18px;
+  padding:13px 15px;
+  background:var(--soft);
+  border-radius:15px;
+  color:#655e58;
+  font-size:13px;
+}
+
+.course-target strong{
+  color:var(--dark);
+}
+
+.course-actions{
+  display:flex;
+  gap:9px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+
+.course-actions .btn{
+  flex:1;
+}
+
+/* ===== OTHER COURSES ===== */
+
+.other-courses{
+  background:var(--cream);
+}
+
+.other-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.other-card{
+  background:#fff;
+  border:1px solid var(--line);
+  padding:24px;
+  border-radius:22px;
+  transition:.3s;
+}
+
+.other-card:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow2);
+}
+
+.other-icon{
+  width:48px;
+  height:48px;
+  border-radius:15px;
+  background:var(--beige);
+  color:var(--brown);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:15px;
+}
+
+.other-icon svg{
+  width:23px;
+  height:23px;
+}
+
+.other-card h3{
+  color:var(--dark);
+  font-size:18px;
+  margin-bottom:7px;
+}
+
+.other-card p{
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:16px;
+}
+
+.available{
+  display:inline-flex;
+  padding:6px 11px;
+  border-radius:50px;
+  background:#f0ebe5;
+  color:var(--brown);
+  font-size:12px;
+  font-weight:700;
+}
+
+/* ===== SERVICES ===== */
+
+.services{
+  background:#fff;
+}
 
 .service-grid{
- display:grid;grid-template-columns:repeat(3,1fr);gap:18px
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
 }
-.service{
- border:1px solid var(--line);padding:24px;border-radius:20px;background:white;
- transition:.2s
-}
-.service:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.service h3{color:var(--brown);font-size:19px}
-.service .from{color:var(--brown);font-weight:bold;margin:8px 0}
-.service p{color:var(--muted);font-size:14px}
 
-.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.team-item{
- padding:22px;background:var(--light);border-radius:18px;text-align:center;
- border:1px solid var(--line)
+.service-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:23px;
+  transition:.3s;
 }
+
+.service-card:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow2);
+}
+
+.service-icon{
+  width:52px;
+  height:52px;
+  background:var(--beige);
+  color:var(--brown);
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:15px;
+}
+
+.service-icon svg{
+  width:25px;
+  height:25px;
+}
+
+.service-card h3{
+  color:var(--dark);
+  font-size:17px;
+  margin-bottom:5px;
+}
+
+.service-card p{
+  color:var(--muted);
+  font-size:13px;
+  min-height:45px;
+}
+
+.service-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:15px;
+}
+
+.service-price{
+  font-size:12px;
+  color:var(--brown);
+  font-weight:800;
+}
+
+/* ===== TEAM ===== */
+
+.team{
+  background:var(--cream);
+}
+
+.team-box{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:38px;
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:28px;
+  align-items:center;
+  box-shadow:var(--shadow2);
+}
+
+.team-avatar{
+  width:110px;
+  height:110px;
+  background:var(--beige);
+  border-radius:35px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--brown);
+  font-size:38px;
+  font-weight:800;
+}
+
+.team-box h3{
+  font-size:25px;
+  color:var(--dark);
+  margin-bottom:10px;
+}
+
+.team-box p{
+  color:var(--muted);
+  margin-bottom:12px;
+}
+
+/* ===== ABOUT ===== */
 
 .about{
- background:var(--light)
+  background:#fff;
 }
-.about-box{
- background:white;border-radius:30px;padding:40px;border:1px solid var(--line);
- max-width:900px;margin:auto
-}
-.about-box li{margin:8px 0}
 
-.review-wrap{max-width:800px;margin:auto}
-.review{
- background:white;border:1px solid var(--line);border-radius:25px;padding:35px;
- box-shadow:var(--shadow);min-height:180px;text-align:center
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
 }
-.review p{font-size:18px}
-.review-controls{text-align:center;margin-top:15px}
-.review-controls button{
- border:1px solid var(--line);background:white;color:var(--brown);
- border-radius:50%;width:38px;height:38px;margin:4px
+
+.about-card{
+  padding:30px;
+  border:1px solid var(--line);
+  border-radius:25px;
+  background:var(--cream);
+}
+
+.about-card h3{
+  color:var(--dark);
+  margin-bottom:12px;
+}
+
+.about-card p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.about-list{
+  display:grid;
+  gap:11px;
+  margin-top:17px;
+}
+
+.about-list div{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  color:#625b55;
+  font-size:14px;
+}
+
+.about-list svg{
+  color:var(--brown);
+  width:18px;
+  height:18px;
+  margin-top:5px;
+  flex:none;
+}
+
+/* ===== REVIEWS ===== */
+
+.reviews{
+  background:var(--cream);
+}
+
+.review-box{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:35px;
+  max-width:850px;
+  margin:auto;
+  text-align:center;
+}
+
+.review-mark{
+  width:48px;
+  height:48px;
+  background:var(--beige);
+  color:var(--brown);
+  border-radius:50%;
+  margin:0 auto 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  font-weight:800;
+}
+
+.review-text{
+  color:#4f4944;
+  font-size:17px;
+  min-height:75px;
+}
+
+.review-dots{
+  display:flex;
+  justify-content:center;
+  gap:7px;
+  margin-top:20px;
+}
+
+.review-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#d9cabe;
+}
+
+.review-dot.active{
+  width:20px;
+  border-radius:10px;
+  background:var(--brown);
+}
+
+/* ===== SOCIAL ===== */
+
+.social{
+  background:#fff;
 }
 
 .social-grid{
- display:grid;grid-template-columns:repeat(4,1fr);gap:14px
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:12px;
 }
-.social{
- border:1px solid var(--line);border-radius:17px;padding:18px;text-align:center;
- background:white;color:var(--brown);font-weight:bold
-}
-.social:hover{background:var(--beige)}
 
-.cta{
- background:var(--beige);text-align:center;border-radius:35px;
- padding:55px 25px
+.social-card{
+  min-height:115px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  transition:.3s;
+  background:#fff;
 }
-.cta h2{font-size:35px;color:var(--dark)}
+
+.social-card:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow2);
+}
+
+.social-card svg{
+  width:27px;
+  height:27px;
+}
+
+.social-card span{
+  font-size:12px;
+  color:#625b55;
+  font-weight:700;
+}
+
+.facebook svg{color:#1877f2}
+.instagram svg{color:#e1306c}
+.tiktok svg{color:#000}
+.youtube svg{color:#ff0000}
+.telegram svg{color:#229ed9}
+.whatsapp svg{color:#25d366}
+.group svg{color:#765640}
+
+/* ===== CONTACT ===== */
+
+.contact{
+  background:var(--cream);
+}
+
+.contact-box{
+  background:var(--brown);
+  color:#fff;
+  border-radius:30px;
+  padding:45px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+  overflow:hidden;
+  position:relative;
+}
+
+.contact-box::after{
+  content:"";
+  position:absolute;
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  background:rgba(255,255,255,.06);
+  left:-80px;
+  top:-100px;
+}
+
+.contact-box h2{
+  font-size:31px;
+  margin-bottom:8px;
+  position:relative;
+  z-index:1;
+}
+
+.contact-box p{
+  color:rgba(255,255,255,.76);
+  position:relative;
+  z-index:1;
+}
+
+.contact-box .btn{
+  background:#fff;
+  color:var(--brown);
+  position:relative;
+  z-index:1;
+  flex:none;
+}
+
+.contact-box .btn:hover{
+  background:var(--beige);
+}
+
+/* ===== FOOTER ===== */
 
 footer{
- background:var(--dark);color:white;text-align:center;padding:35px 15px
-}
-footer .logo{color:white}
-footer p{opacity:.75;font-size:13px;margin-top:8px}
-
-.float-wa{
- position:fixed;left:20px;bottom:20px;width:57px;height:57px;border-radius:50%;
- background:#25D366;color:white;display:flex;align-items:center;justify-content:center;
- font-size:25px;z-index:900;box-shadow:0 8px 25px rgba(0,0,0,.2)
+  background:#fff;
+  border-top:1px solid var(--line);
+  padding:30px 0;
 }
 
-/* MODALS */
+.footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.footer-logo{
+  font-size:20px;
+  font-weight:800;
+  color:var(--dark);
+}
+
+.footer p{
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* ===== WHATSAPP ===== */
+
+.whatsapp-float{
+  position:fixed;
+  left:22px;
+  bottom:22px;
+  z-index:1200;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#25d366;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 12px 30px rgba(37,211,102,.28);
+  transition:.3s;
+}
+
+.whatsapp-float:hover{
+  transform:translateY(-5px) scale(1.04);
+}
+
+.whatsapp-float svg{
+  width:29px;
+  height:29px;
+}
+
+/* ===== MODALS ===== */
+
 .modal{
- position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:3000;
- display:none;align-items:center;justify-content:center;padding:15px
-}
-.modal.show{display:flex}
-.modal-box{
- background:white;width:min(760px,100%);max-height:92vh;overflow:auto;
- border-radius:28px;padding:30px;position:relative
-}
-.modal-close{
- position:absolute;left:18px;top:15px;border:0;background:none;
- font-size:28px;color:var(--brown)
-}
-.modal h2{color:var(--brown);margin-bottom:8px}
-.modal-sub{color:var(--muted);font-size:14px;margin-bottom:20px}
-.steps{display:flex;gap:7px;margin-bottom:25px}
-.step{
- flex:1;text-align:center;padding:7px;border-radius:20px;
- background:#eee;color:#777;font-size:12px
-}
-.step.active{background:var(--beige);color:var(--brown);font-weight:bold}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.field{margin-bottom:14px}
-.field.full{grid-column:1/-1}
-.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:5px}
-.field input,.field textarea,.field select{
- width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;
- outline:none;background:#fff
-}
-.field textarea{min-height:100px;resize:vertical}
-.field input:focus,.field textarea:focus,.field select:focus{
- border-color:var(--brown)
-}
-.check{
- display:flex;gap:8px;align-items:flex-start;background:var(--light);
- padding:15px;border-radius:15px;margin:15px 0;font-size:13px
-}
-.terms{
- background:#faf7f3;border:1px solid var(--line);border-radius:17px;
- padding:18px;font-size:13px;margin-bottom:18px
-}
-.terms li{margin:5px 0}
-.modal-page{display:none}
-.modal-page.active{display:block}
-.success{text-align:center;padding:35px 10px}
-.success .icon{font-size:60px}
-.success h3{color:var(--brown);font-size:25px}
-.note{
- background:#fff9ef;border:1px solid #ead9bf;padding:14px;border-radius:13px;
- font-size:13px;margin:15px 0
+  position:fixed;
+  inset:0;
+  background:rgba(35,25,18,.52);
+  backdrop-filter:blur(7px);
+  z-index:3000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
 }
 
-@media(max-width:850px){
- .hero-grid{grid-template-columns:1fr}
- .hero h1{font-size:40px}
- .cards{grid-template-columns:1fr}
- .stats-grid{grid-template-columns:1fr 1fr}
- .service-grid{grid-template-columns:1fr 1fr}
- .team-grid{grid-template-columns:1fr 1fr}
- .social-grid{grid-template-columns:1fr 1fr}
+.modal.show{
+  display:flex;
+  animation:modalBg .25s ease both;
 }
-@media(max-width:550px){
- section{padding:60px 0}
- .hero{min-height:auto;padding:55px 0}
- .hero h1{font-size:34px}
- .hero-card{padding:25px}
- .stats-grid,.service-grid,.team-grid,.social-grid{grid-template-columns:1fr}
- .form-grid{grid-template-columns:1fr}
- .field.full{grid-column:auto}
- .section-head h2{font-size:28px}
+
+.modal-box{
+  width:min(700px,100%);
+  max-height:92vh;
+  overflow-y:auto;
+  background:#fff;
+  border-radius:27px;
+  padding:28px;
+  box-shadow:0 30px 80px rgba(30,20,12,.22);
+  animation:modalIn .35s ease both;
+}
+
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:15px;
+  margin-bottom:22px;
+}
+
+.modal-head h2{
+  color:var(--dark);
+  font-size:23px;
+  line-height:1.5;
+}
+
+.modal-head p{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.modal-close{
+  width:40px;
+  height:40px;
+  border:1px solid var(--line);
+  background:var(--soft);
+  color:var(--brown);
+  border-radius:12px;
+  cursor:pointer;
+  flex:none;
+}
+
+.modal-step{
+  display:none;
+}
+
+.modal-step.active{
+  display:block;
+  animation:fadeUp .3s ease both;
+}
+
+.notice{
+  background:var(--soft);
+  border:1px solid var(--line);
+  border-radius:17px;
+  padding:15px;
+  color:#645c55;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+.notice strong{
+  color:var(--dark);
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+.field label{
+  color:#514a44;
+  font-size:13px;
+  font-weight:700;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:14px;
+  padding:12px 14px;
+  outline:none;
+  color:var(--text);
+  font-size:13px;
+  transition:.25s;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  border-color:var(--brown2);
+  box-shadow:0 0 0 4px rgba(118,86,64,.07);
+}
+
+.field textarea{
+  min-height:110px;
+  resize:vertical;
+}
+
+.form-actions{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+}
+
+.form-actions .btn{
+  flex:1;
+}
+
+.condition-box{
+  background:#faf7f3;
+  border:1px solid var(--line);
+  padding:17px;
+  border-radius:17px;
+  margin-top:18px;
+}
+
+.condition-box h4{
+  color:var(--dark);
+  font-size:14px;
+  margin-bottom:8px;
+}
+
+.condition-box ul{
+  padding-right:18px;
+  color:#69615a;
+  font-size:12px;
+}
+
+.condition-box li{
+  margin:3px 0;
+}
+
+.success{
+  text-align:center;
+  padding:30px 10px;
+}
+
+.success-icon{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  background:#e9f8ee;
+  color:#25a75a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 15px;
+}
+
+.success-icon svg{
+  width:32px;
+  height:32px;
+}
+
+.success h3{
+  color:var(--dark);
+  margin-bottom:8px;
+}
+
+.success p{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* ===== ANIMATIONS ===== */
+
+.reveal{
+  opacity:0;
+  transform:translateY(25px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(22px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-9px)}
+}
+
+@keyframes modalIn{
+  from{
+    opacity:0;
+    transform:translateY(25px) scale(.97);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+@keyframes modalBg{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:900px){
+  .hero-card{
+    display:none;
+  }
+
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .stat:nth-child(2){
+    border-left:0;
+  }
+
+  .course-grid{
+    grid-template-columns:1fr;
+  }
+
+  .other-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .service-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .social-grid{
+    grid-template-columns:repeat(4,1fr);
+  }
+}
+
+@media(max-width:650px){
+  section{
+    padding:65px 0;
+  }
+
+  .hero{
+    min-height:600px;
+  }
+
+  .hero h1{
+    font-size:43px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  .hero-actions .btn{
+    width:100%;
+  }
+
+  .stats-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .stat{
+    border-bottom:1px solid var(--line);
+  }
+
+  .other-grid,
+  .service-grid,
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+
+  .team-box{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .team-avatar{
+    margin:auto;
+  }
+
+  .social-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .contact-box{
+    padding:30px 23px;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .contact-box .btn{
+    width:100%;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+  .modal-box{
+    padding:21px;
+  }
+
+  .course-card{
+    padding:22px;
+  }
+
+  .footer{
+    flex-direction:column;
+    text-align:center;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto!important;
+    animation:none!important;
+    transition:none!important;
+  }
+
+  .reveal{
+    opacity:1;
+    transform:none;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<!-- SVG ICONS -->
+<svg width="0" height="0" style="position:absolute">
+<symbol id="i-menu" viewBox="0 0 24 24">
+<path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="i-x" viewBox="0 0 24 24">
+<path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="i-arrow" viewBox="0 0 24 24">
+<path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+
+<symbol id="i-book" viewBox="0 0 24 24">
+<path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H20v17H7.5A2.5 2.5 0 0 0 5 21.5zM5 4.5v17M8 6h8M8 10h8M8 14h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+
+<symbol id="i-monitor" viewBox="0 0 24 24">
+<rect x="3" y="4" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+<path d="M8 21h8M12 17v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="i-megaphone" viewBox="0 0 24 24">
+<path d="M4 13h4l9 5V6l-9 5H4zM8 13l1.5 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M19 9.5c1.5 1.3 1.5 3.7 0 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="i-spark" viewBox="0 0 24 24">
+<path d="M12 2l1.5 6.5L20 10l-6.5 1.5L12 18l-1.5-6.5L4 10l6.5-1.5zM19 17l.6 2.4L22 20l-2.4.6L19 23l-.6-2.4L16 20l2.4-.6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+</symbol>
+
+<symbol id="i-chart" viewBox="0 0 24 24">
+<path d="M4 20V10M10 20V5M16 20v-8M22 20V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="i-users" viewBox="0 0 24 24">
+<circle cx="9" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+<path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5M16 5.5a3 3 0 0 1 0 5.8M17 15c2.4.5 4 2 4 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="i-check" viewBox="0 0 24 24">
+<path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+
+<symbol id="i-briefcase" viewBox="0 0 24 24">
+<rect x="3" y="7" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+<path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+</symbol>
+
+<symbol id="i-search" viewBox="0 0 24 24">
+<circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+<path d="M16 16l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="i-file" viewBox="0 0 24 24">
+<path d="M6 3h9l4 4v14H6zM15 3v5h4M9 12h6M9 16h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="i-globe" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/>
+<path d="M3 12h18M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9S9.5 5.5 12 3z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+</symbol>
+
+<symbol id="i-credit" viewBox="0 0 24 24">
+<rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+<path d="M3 9h18M7 14h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="i-camera" viewBox="0 0 24 24">
+<path d="M4 7h4l1.5-2h5L16 7h4v12H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+<circle cx="12" cy="13" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+</symbol>
+
+<symbol id="i-send" viewBox="0 0 24 24">
+<path d="M21 3L10 14M21 3l-7 18-4-7-7-4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+</symbol>
+
+<symbol id="i-lightbulb" viewBox="0 0 24 24">
+<path d="M9 18h6M10 21h4M8 14.5A6 6 0 1 1 16 14c-.8.8-1.5 1.5-1.5 3h-5c0-1.3-.7-2.2-1.5-2.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="i-whatsapp" viewBox="0 0 24 24">
+<path d="M20.5 11.5a8.5 8.5 0 0 1-12.5 7.4L3.5 20.5l1.6-4.2A8.5 8.5 0 1 1 20.5 11.5z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+<path d="M8.2 8.2c.3-.5.6-.5.9-.5h.5c.2 0 .4.1.5.4l.7 1.7c.1.2.1.4-.1.6l-.6.7c.5 1 1.3 1.8 2.4 2.3l.7-.6c.2-.2.4-.2.6-.1l1.7.8c.2.1.3.3.3.5v.5c0 .3-.1.6-.5.9-.5.3-1.1.5-1.8.3-1.3-.3-2.7-1.1-3.9-2.3-1.2-1.2-2-2.6-2.3-3.9-.2-.7 0-1.3.3-1.8z" fill="currentColor"/>
+</symbol>
+
+<symbol id="i-facebook" viewBox="0 0 24 24">
+<path d="M14 21v-8h2.7l.4-3H14V8.1c0-.9.3-1.6 1.7-1.6h1.7V3.8c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.4V10H7.8v3h2.7v8z" fill="currentColor"/>
+</symbol>
+
+<symbol id="i-instagram" viewBox="0 0 24 24">
+<rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+<circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+<circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+</symbol>
+
+<symbol id="i-tiktok" viewBox="0 0 24 24">
+<path d="M14 4v10.2a4.2 4.2 0 1 1-3.6-4.1M14 4c.6 2.5 2.1 4.1 4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+</symbol>
+
+<symbol id="i-youtube" viewBox="0 0 24 24">
+<path d="M21 8.2a2.7 2.7 0 0 0-1.9-1.9C17.4 5.8 12 5.8 12 5.8s-5.4 0-7.1.5A2.7 2.7 0 0 0 3 8.2a28 28 0 0 0-.5 3.8 28 28 0 0 0 .5 3.8 2.7 2.7 0 0 0 1.9 1.9c1.7.5 7.1.5 7.1.5s5.4 0 7.1-.5a2.7 2.7 0 0 0 1.9-1.9 28 28 0 0 0 .5-3.8 28 28 0 0 0-.5-3.8z" fill="none" stroke="currentColor" stroke-width="1.7"/>
+<path d="M10 9.5l5 2.5-5 2.5z" fill="currentColor"/>
+</symbol>
+
+<symbol id="i-telegram" viewBox="0 0 24 24">
+<path d="M21 4L3 11l7 2 2 7zM10 13l3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+</symbol>
+
+<symbol id="i-users2" viewBox="0 0 24 24">
+<circle cx="9" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+<path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5M16 6a3 3 0 0 1 0 6M17 15c2.4.5 4 2 4 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+</symbol>
+</svg>
+
 
 <header>
- <div class="container nav">
-  <a href="#home" class="logo">DiGitalna</a>
-  <button class="menu-btn" onclick="openMenu()">☰</button>
- </div>
+  <div class="container nav">
+    <a href="#home" class="logo">
+      D<span class="dot"></span>Gitalna
+    </a>
+
+    <button class="menu-btn" onclick="openMenu()" aria-label="القائمة">
+      <svg><use href="#i-menu"></use></svg>
+    </button>
+  </div>
 </header>
 
-<aside class="side" id="side">
- <button class="close" onclick="closeMenu()">×</button>
- <h3>DiGitalna</h3>
- <a href="#home" onclick="closeMenu()">الرئيسية</a>
- <a href="#courses" onclick="closeMenu()">الدورات</a>
- <a href="#otherCourses" onclick="closeMenu()">دورات أخرى</a>
- <a href="#services" onclick="closeMenu()">الخدمات الرقمية</a>
- <a href="#team" onclick="closeMenu()">فريق DiGitalna</a>
- <a href="#about" onclick="closeMenu()">من نحن</a>
- <a href="#reviews" onclick="closeMenu()">آراء العميلات</a>
- <a href="#social" onclick="closeMenu()">منصاتنا</a>
- <a href="#contact" onclick="closeMenu()">تواصلي معنا</a>
-</aside>
 
+<div class="side-menu" id="sideMenu">
+  <div class="side-head">
+    <div class="side-title">DiGitalna</div>
+    <button class="close-btn" onclick="closeMenu()">
+      <svg><use href="#i-x"></use></svg>
+    </button>
+  </div>
+
+  <a href="#courses" onclick="closeMenu()">
+    <svg><use href="#i-book"></use></svg>
+    الدورات
+  </a>
+
+  <a href="#services" onclick="closeMenu()">
+    <svg><use href="#i-briefcase"></use></svg>
+    الخدمات
+  </a>
+
+  <a href="#team" onclick="closeMenu()">
+    <svg><use href="#i-users"></use></svg>
+    فريق DiGitalna
+  </a>
+
+  <a href="#about" onclick="closeMenu()">
+    <svg><use href="#i-lightbulb"></use></svg>
+    عن DiGitalna
+  </a>
+
+  <a href="#reviews" onclick="closeMenu()">
+    <svg><use href="#i-check"></use></svg>
+    آراء المتدربات
+  </a>
+
+  <a href="#social" onclick="closeMenu()">
+    <svg><use href="#i-globe"></use></svg>
+    منصاتنا
+  </a>
+
+  <a href="#contact" onclick="closeMenu()">
+    <svg><use href="#i-send"></use></svg>
+    تواصلي معنا
+  </a>
+</div>
+
+
+<main>
+
+<!-- HERO -->
 <section class="hero" id="home">
- <div class="container hero-grid">
-  <div>
-   <span class="badge">DIGITAL SKILLS • MARKETING • SERVICES</span>
-   <h1>تعلمي، طبقي،<br><strong>وطوري مشروعك</strong></h1>
-   <p>
-    DiGitalna تجمع لكِ دورات عملية، استشارات، خدمات رقمية ومهارات تساعدك
-    تبني مشروعك، تطوري صفحتك وتدخلي عالم العمل الرقمي خطوة بخطوة.
-   </p>
-   <div class="actions">
-    <a class="btn" href="#courses">اكتشفي الدورات</a>
-    <a class="btn light" href="#services">اكتشفي الخدمات</a>
-   </div>
-  </div>
+  <div class="container">
+    <div class="hero-content">
 
-  <div class="hero-card">
-   <div class="big">DiGitalna</div>
-   <small>تعلم • تطبيق • تطوير • خدمات</small>
-   <div class="mini-stats">
-    <div class="mini-stat"><b>4</b>دورات رئيسية</div>
-    <div class="mini-stat"><b>1:1</b>متابعة شخصية</div>
-    <div class="mini-stat"><b>∞</b>أفكار ومجالات</div>
-    <div class="mini-stat"><b>Online</b>من أي مكان</div>
-   </div>
+      <div class="eyebrow">
+        <span></span>
+        DiGitalna
+      </div>
+
+      <h1>
+        تعلّمي، طوّري مهاراتك،
+        وابدئي <strong>طريقك الرقمي.</strong>
+      </h1>
+
+      <p>
+        دورات عملية، خدمات رقمية، ومجموعة من المتخصصين
+        لمساعدتك على تطوير مهاراتك وتحويل أفكارك إلى مشاريع قابلة للتطبيق.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#courses" class="btn btn-primary">
+          <svg><use href="#i-book"></use></svg>
+          اكتشفي الدورات
+        </a>
+
+        <a href="#services" class="btn btn-light">
+          <svg><use href="#i-briefcase"></use></svg>
+          احجزي خدمة
+        </a>
+      </div>
+
+    </div>
+
+    <div class="hero-card">
+      <div class="mini-icon">
+        <svg><use href="#i-spark"></use></svg>
+      </div>
+      <strong>تعلم + تطبيق</strong>
+      <span>خطوات عملية تناسب البداية والتطور.</span>
+    </div>
   </div>
- </div>
 </section>
 
+
+<!-- STATS -->
 <section class="stats">
- <div class="container stats-grid">
-  <div class="stat"><b>970,889</b><span>مشاهدة خلال 28 يوماً</span></div>
-  <div class="stat"><b>79,848</b><span>تفاعل</span></div>
-  <div class="stat"><b>907</b><span>متابع مكتسب</span></div>
-  <div class="stat"><b>28 يوم</b><span>حسب الإحصائيات المعروضة</span></div>
- </div>
-</section>
+  <div class="container stats-grid">
 
-<section id="courses">
- <div class="container">
-  <div class="section-head">
-   <span>الدورات</span>
-   <h2>دورات عملية باش تتعلمي وتطبقي</h2>
-   <p>اختاري المجال اللي يناسب هدفك، أو سجلي في أكثر من دورة واستفيدي من تخفيض خاص.</p>
-  </div>
-
-  <div class="cards">
-
-   <!-- COURSE 1 -->
-   <article class="card">
-    <div class="card-top">
-     <span class="tag">MARKETING</span>
-     <span class="price">3500 دج</span>
-    </div>
-    <h3>دورة التسويق وصناعة المحتوى والإعلانات الممولة</h3>
-    <p>من فهم السوق والجمهور إلى صناعة المحتوى، بناء الصفحة، التسويق والإعلانات وتحليل النتائج.</p>
-
-    <ul class="list">
-     <li>دراسة السوق والجمهور المستهدف والمنافسين</li>
-     <li>بناء استراتيجية تسويقية مناسبة للمشروع</li>
-     <li>الهوية الرقمية والـ Branding</li>
-     <li>صناعة أفكار المحتوى</li>
-     <li>Hooks و CTA وكتابة المحتوى</li>
-     <li>كتابة المحتوى التسويقي والتفاعلي</li>
-     <li>التخطيط للمحتوى والتسويق</li>
-     <li>فهم الخوارزميات والترندات و SEO</li>
-     <li>Content Marketing و UGC و Affiliate Marketing</li>
-     <li>الإعلانات الممولة وأهداف الحملات</li>
-     <li>اختيار الجمهور والميزانية والكرياتيف</li>
-     <li>تحليل نتائج الحملات ومعرفة الأخطاء</li>
-     <li>كيفية تقديم الخدمات أونلاين والعمل Freelance</li>
-     <li>إدارة الصفحة وتطويرها</li>
-    </ul>
-
-    <p><b>ماذا ستحصلين عليه؟</b></p>
-    <ul class="list">
-     <li>دروس مسجلة عبر Telegram</li>
-     <li>20+ درس</li>
-     <li>شرح صوتي وكتابي + تطبيقات</li>
-     <li>الوصول للمحتوى وفق شروط الدورة</li>
-     <li>متابعة شخصية عبر WhatsApp</li>
-     <li>قناة خاصة بالأفكار</li>
-     <li>تطبيق على مشروعك وليس مجرد معلومات نظرية</li>
-    </ul>
-
-    <p><b>مناسبة لمن؟</b> لمن تريد تعلم مهارة، تطوير صفحتها، زيادة المبيعات، تقديم خدمات أونلاين أو بداية مشروع من الصفر.</p>
-
-    <button class="btn" style="width:100%;margin-top:18px"
-     onclick="openCourse('دورة التسويق وصناعة المحتوى والإعلانات الممولة','3500 دج')">
-     اشتركي في الدورة
-    </button>
-   </article>
-
-   <!-- COURSE 2 -->
-   <article class="card">
-    <div class="card-top">
-     <span class="tag">DIGITAL PRODUCTS + AI</span>
-     <span class="price">3000 دج</span>
-    </div>
-    <h3>صناعة المنتجات الرقمية بالذكاء الاصطناعي وتسويقها</h3>
-    <p>تعلمي كيف تختاري فكرة ومنتجاً رقمياً، تصنعيه وتجهزيه للبيع في السوق الجزائري أو الأجنبي.</p>
-
-    <ul class="list">
-     <li>ما هي المنتجات الرقمية وأنواعها</li>
-     <li>اختيار المجال والـ Niche</li>
-     <li>اكتشاف أفكار منتجات قابلة للبيع</li>
-     <li>دراسة السوق والطلب والمنافسة</li>
-     <li>صناعة المنتجات بالذكاء الاصطناعي</li>
-     <li>PDF و Planners و Worksheets وغيرها</li>
-     <li>المنتجات التفاعلية</li>
-     <li>Landing Pages</li>
-     <li>تحويل المواقع والمنتجات إلى تطبيقات هاتفية</li>
-     <li>طريقة تسليم المنتج للعميل</li>
-     <li>استهداف السوق الجزائري والأسواق الأجنبية</li>
-     <li>معرفة أنواع المنتجات التي يستهلكها كل سوق</li>
-     <li>كتابة المحتوى التسويقي للمنتج</li>
-     <li>اختيار المنصات المناسبة للبيع</li>
-     <li>صناعة منتج لنفسك أو للبيع أو حسب الطلب</li>
-     <li>أساسيات التسعير والدفع والتسويق</li>
-    </ul>
-
-    <div class="note">
-     مثال توضيحي فقط: منتج بـ 7$ × 10 مبيعات = 70$.
-     هذا مثال حسابي وليس وعداً بتحقيق هذا الدخل.
+    <div class="stat">
+      <strong>970,889</strong>
+      <span>مشاهدة خلال 28 يوم</span>
     </div>
 
-    <ul class="list">
-     <li>دروس مسجلة عبر Telegram</li>
-     <li>متابعة عبر WhatsApp</li>
-     <li>قناة أفكار المنتجات</li>
-     <li>تطبيق عملي خطوة بخطوة</li>
-    </ul>
-
-    <button class="btn" style="width:100%;margin-top:18px"
-     onclick="openCourse('صناعة المنتجات الرقمية بالذكاء الاصطناعي وتسويقها','3000 دج')">
-     اشتركي في الدورة
-    </button>
-   </article>
-
-   <!-- COURSE 3 -->
-   <article class="card">
-    <div class="card-top">
-     <span class="tag">WEB DEVELOPMENT</span>
-     <span class="price">4200 دج</span>
+    <div class="stat">
+      <strong>79,848</strong>
+      <span>تفاعل</span>
     </div>
-    <h3>إنشاء المواقع بـ HTML + CSS + JavaScript والذكاء الاصطناعي</h3>
-    <p>ابدئي من الصفر وتعلمي بناء مواقع حقيقية وفهم الكود وتعديله بمساعدة الذكاء الاصطناعي.</p>
 
-    <ul class="list">
-     <li>HTML بشكل شامل</li>
-     <li>CSS وتنسيق المواقع عملياً</li>
-     <li>أساسيات JavaScript والتفاعل</li>
-     <li>Responsive Design للهاتف والكمبيوتر</li>
-     <li>إنشاء Landing Pages</li>
-     <li>مواقع الشركات والخدمات</li>
-     <li>المتاجر الإلكترونية</li>
-     <li>Portfolio ومواقع التعريف</li>
-     <li>ربط الدومين ونشر الموقع</li>
-     <li>استخدام AI في كتابة وتطوير الكود</li>
-     <li>فهم الكود وتعديله وليس مجرد نسخه</li>
-     <li>مشاريع تطبيقية + مشروع نهائي</li>
-     <li>كيفية استخدام المهارة في Freelance والعمل مع العملاء</li>
-    </ul>
-
-    <ul class="list">
-     <li>يمكن البداية من الهاتف</li>
-     <li>الكمبيوتر يصبح مهماً للمشاريع الأكبر</li>
-     <li>دروس Telegram</li>
-     <li>الوصول للمحتوى وفق شروط الدورة</li>
-     <li>متابعة WhatsApp</li>
-     <li>قناة أفكار</li>
-    </ul>
-
-    <button class="btn" style="width:100%;margin-top:18px"
-     onclick="openCourse('دورة إنشاء المواقع بـ HTML + CSS + JavaScript والذكاء الاصطناعي','4200 دج')">
-     اشتركي في الدورة
-    </button>
-   </article>
-
-   <!-- COURSE 4 -->
-   <article class="card">
-    <div class="card-top">
-     <span class="tag">ADS + DIGITAL INTERMEDIATION</span>
-     <span class="price">2000 دج</span>
+    <div class="stat">
+      <strong>907</strong>
+      <span>متابع جديد</span>
     </div>
-    <h3>دورة الإعلانات الممولة والوساطة الرقمية</h3>
-    <p>تعلمي أساسيات الإعلانات الممولة، تحليل الحملات، تقديم خدمة الإعلانات والوساطة الرقمية.</p>
 
-    <ul class="list">
-     <li>ما هي الإعلانات الممولة وأنواعها</li>
-     <li>أهداف الحملات</li>
-     <li>Facebook و Instagram و TikTok Ads</li>
-     <li>اختيار الجمهور</li>
-     <li>تحديد الميزانية</li>
-     <li>اختيار الكرياتيف المناسب</li>
-     <li>كتابة الإعلان</li>
-     <li>قراءة وتحليل نتائج الحملة</li>
-     <li>اكتشاف أسباب ضعف الحملة</li>
-     <li>تسعير خدمة الإعلانات</li>
-     <li>أساسيات شحن Visa واستخدامها</li>
-     <li>التسوق أونلاين</li>
-     <li>الوساطة الرقمية</li>
-     <li>أربع مجالات يمكن تقديم خدمات الوساطة فيها</li>
-    </ul>
+    <div class="stat">
+      <strong>28</strong>
+      <span>يوم</span>
+    </div>
 
-    <ul class="list">
-     <li>يمكن التعلم والتطبيق من الهاتف</li>
-     <li>دروس Telegram</li>
-     <li>تطبيقات عملية</li>
-     <li>متابعة WhatsApp</li>
-     <li>قناة أفكار</li>
-    </ul>
-
-    <button class="btn" style="width:100%;margin-top:18px"
-     onclick="openCourse('دورة الإعلانات الممولة والوساطة الرقمية','2000 دج')">
-     اشتركي في الدورة
-    </button>
-   </article>
   </div>
-
-  <div class="discount">
-   <h3>🎁 تخفيض عند التسجيل في أكثر من دورة</h3>
-   <p>إذا حبيتي تسجلي في أكثر من دورة، أرسلي طلبك وسنتواصل معك لتأكيد الدورات والتخفيض الخاص بالتسجيل الجماعي.</p>
-  </div>
- </div>
 </section>
 
-<section id="otherCourses">
- <div class="container">
-  <div class="section-head">
-   <span>دورات أخرى</span>
-   <h2>مجالات إضافية</h2>
-   <p>بعض الدورات غير مفتوحة حالياً للتسجيل.</p>
+
+<!-- COURSES -->
+<section class="courses" id="courses">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-label">الدورات</div>
+      <h2>دورات عملية تبني مهارة حقيقية</h2>
+      <p>
+        اختاري المجال المناسب لك وابدئي من المستوى الذي يناسبك.
+      </p>
+    </div>
+
+
+    <div class="course-grid">
+
+
+      <!-- COURSE 1 -->
+      <article class="course-card reveal">
+
+        <div class="course-top">
+          <div class="course-icon">
+            <svg><use href="#i-megaphone"></use></svg>
+          </div>
+          <div class="price">3500 دج</div>
+        </div>
+
+        <h3>دورة التسويق وصناعة المحتوى والإعلانات الممولة</h3>
+
+        <p class="course-description">
+          دورة عملية لفهم التسويق وصناعة المحتوى والإعلانات وإدارة الصفحة بطريقة منظمة.
+        </p>
+
+        <div class="course-info">
+          <div class="course-info-title">موجهة لـ</div>
+          <ul>
+            <li>أصحاب المشاريع والصفحات</li>
+            <li>صانعات المحتوى</li>
+            <li>من تريد تعلم مهارة للعمل أونلاين</li>
+            <li>من تريد تطوير مشروعها أو البدء من الصفر</li>
+            <li>من تريد تقديم خدمات التسويق وإدارة الصفحات</li>
+          </ul>
+        </div>
+
+        <div class="course-info">
+          <div class="course-info-title">محتوى الدورة</div>
+          <ul>
+            <li>دراسة السوق والجمهور والمنافسين</li>
+            <li>الاستراتيجية التسويقية واستراتيجية المحتوى</li>
+            <li>الهوية الرقمية والـ Branding</li>
+            <li>أفكار المحتوى والـ Hooks وكتابة السكريبتات</li>
+            <li>كتابة المحتوى التسويقي والتفاعلي</li>
+            <li>تخطيط المحتوى والتسويق</li>
+            <li>الخوارزميات وSEO والترندات</li>
+            <li>Content Marketing وUGC وAffiliate Marketing</li>
+            <li>الإعلانات الممولة وأنواع الحملات</li>
+            <li>تصميم الـ Creatives وتحليل الحملات</li>
+            <li>تقديم الخدمات والعمل Freelance</li>
+            <li>إدارة الصفحات والتعامل مع العملاء</li>
+          </ul>
+        </div>
+
+        <div class="course-target">
+          <strong>وش تتعلمي؟</strong><br>
+          كيفاش تحللي السوق والجمهور، تبني استراتيجية، تكتبي محتوى يخدم هدف،
+          تخططي للصفحة، تطلقي إعلان وتفهمي نتائجه، وتقدمي مهاراتك كخدمة.
+        </div>
+
+        <div class="course-actions">
+          <button class="btn btn-primary" onclick="openCourse('دورة التسويق وصناعة المحتوى والإعلانات الممولة','3500 دج')">
+            <svg><use href="#i-book"></use></svg>
+            اشتركي في الدورة
+          </button>
+
+          <button class="btn btn-light" onclick="courseDetails('marketing')">
+            التفاصيل
+          </button>
+        </div>
+
+      </article>
+
+
+      <!-- COURSE 2 -->
+      <article class="course-card reveal">
+
+        <div class="course-top">
+          <div class="course-icon">
+            <svg><use href="#i-spark"></use></svg>
+          </div>
+          <div class="price">3000 دج</div>
+        </div>
+
+        <h3>صناعة المنتجات الرقمية بالذكاء الاصطناعي وتسويقها</h3>
+
+        <p class="course-description">
+          من فكرة المنتج إلى إنشائه وتسويقه واستهداف السوق الجزائري أو الأجنبي.
+        </p>
+
+        <div class="course-info">
+          <div class="course-info-title">موجهة لـ</div>
+          <ul>
+            <li>من تريد إنشاء منتجات رقمية وبيعها</li>
+            <li>من تريد العمل بالذكاء الاصطناعي</li>
+            <li>أصحاب المشاريع والمحتوى</li>
+            <li>من تريد استهداف السوق الأجنبي</li>
+            <li>من تريد صناعة منتجات لنفسها أو حسب الطلب</li>
+          </ul>
+        </div>
+
+        <div class="course-info">
+          <div class="course-info-title">محتوى الدورة</div>
+          <ul>
+            <li>مفهوم المنتجات الرقمية وأنواعها</li>
+            <li>اختيار المنتج والمجال والـ Niche</li>
+            <li>دراسة السوق واستهلاك المنتجات الرقمية</li>
+            <li>إنشاء المنتجات بالذكاء الاصطناعي والأدوات المناسبة</li>
+            <li>إنشاء Landing Pages</li>
+            <li>تحويل المواقع والمنتجات إلى تطبيقات للهاتف</li>
+            <li>تجهيز المنتج وتسليمه للعميل</li>
+            <li>اختيار المنصات المناسبة للبيع</li>
+            <li>استهداف الجزائر والأسواق الأجنبية</li>
+            <li>كتابة المحتوى التسويقي للمنتج</li>
+            <li>التسويق وصناعة المحتوى للمنتجات الرقمية</li>
+            <li>أساسيات الدفع والبيع أونلاين</li>
+          </ul>
+        </div>
+
+        <div class="course-target">
+          <strong>وش تتعلمي؟</strong><br>
+          كيفاش تختاري فكرة قابلة للبيع، تصنعي منتج رقمي، تجهزيه للتسليم،
+          تختاري السوق والمنصة، وتبني طريقة تسويق تساعدك على الوصول للزبون.
+        </div>
+
+        <div class="course-actions">
+          <button class="btn btn-primary" onclick="openCourse('صناعة المنتجات الرقمية بالذكاء الاصطناعي وتسويقها','3000 دج')">
+            <svg><use href="#i-book"></use></svg>
+            اشتركي في الدورة
+          </button>
+
+          <button class="btn btn-light" onclick="courseDetails('digital')">
+            التفاصيل
+          </button>
+        </div>
+
+      </article>
+
+
+      <!-- COURSE 3 -->
+      <article class="course-card reveal">
+
+        <div class="course-top">
+          <div class="course-icon">
+            <svg><use href="#i-monitor"></use></svg>
+          </div>
+          <div class="price">4200 دج</div>
+        </div>
+
+        <h3>دورة إنشاء المواقع بـ HTML + CSS + JavaScript والذكاء الاصطناعي</h3>
+
+        <p class="course-description">
+          تعلم إنشاء المواقع من الصفر مع تطبيقات عملية واستخدام الذكاء الاصطناعي في البرمجة.
+        </p>
+
+        <div class="course-info">
+          <div class="course-info-title">موجهة لـ</div>
+          <ul>
+            <li>من تريد تعلم إنشاء المواقع</li>
+            <li>من تريد العمل Freelance</li>
+            <li>من تريد إنشاء مواقع للزبائن</li>
+            <li>من تريد إنشاء موقع أو متجر خاص بها</li>
+            <li>من تبدأ من الهاتف ثم تتطور للعمل على الكمبيوتر</li>
+          </ul>
+        </div>
+
+        <div class="course-info">
+          <div class="course-info-title">محتوى الدورة</div>
+          <ul>
+            <li>HTML بشكل شامل</li>
+            <li>CSS والتنسيق العملي</li>
+            <li>أساسيات JavaScript والتفاعل</li>
+            <li>مواقع Responsive للهاتف والكمبيوتر</li>
+            <li>Landing Pages</li>
+            <li>مواقع الشركات والخدمات</li>
+            <li>المتاجر الإلكترونية</li>
+            <li>Portfolio والمواقع الشخصية</li>
+            <li>ربط الدومين ونشر الموقع</li>
+            <li>استخدام الذكاء الاصطناعي في كتابة وتطوير الكود</li>
+            <li>فهم الكود وتعديله بدل الاعتماد على النسخ فقط</li>
+            <li>مشاريع تطبيقية ومشروع نهائي</li>
+          </ul>
+        </div>
+
+        <div class="course-target">
+          <strong>وش تتعلمي؟</strong><br>
+          كيفاش تنشئي موقع من الصفر، تفهمي وتعدلي الكود،
+          تخدمي مواقع متجاوبة، وتستعملي الذكاء الاصطناعي كمساعد في التطوير.
+        </div>
+
+        <div class="course-actions">
+          <button class="btn btn-primary" onclick="openCourse('دورة إنشاء المواقع بـ HTML + CSS + JavaScript والذكاء الاصطناعي','4200 دج')">
+            <svg><use href="#i-book"></use></svg>
+            اشتركي في الدورة
+          </button>
+
+          <button class="btn btn-light" onclick="courseDetails('web')">
+            التفاصيل
+          </button>
+        </div>
+
+      </article>
+
+
+      <!-- COURSE 4 -->
+      <article class="course-card reveal">
+
+        <div class="course-top">
+          <div class="course-icon">
+            <svg><use href="#i-chart"></use></svg>
+          </div>
+          <div class="price">2000 دج</div>
+        </div>
+
+        <h3>دورة الإعلانات الممولة والوساطة الرقمية</h3>
+
+        <p class="course-description">
+          تعلم أساسيات الإعلانات الممولة، تحليل الحملات، وتقديم خدمات رقمية مرتبطة بها.
+        </p>
+
+        <div class="course-info">
+          <div class="course-info-title">موجهة لـ</div>
+          <ul>
+            <li>من تريد تعلم الإعلانات الممولة</li>
+            <li>أصحاب الصفحات والمشاريع</li>
+            <li>من تريد تقديم خدمة الإعلانات</li>
+            <li>من تريد العمل في الوساطة الرقمية</li>
+            <li>من تريد البدء من الهاتف</li>
+          </ul>
+        </div>
+
+        <div class="course-info">
+          <div class="course-info-title">محتوى الدورة</div>
+          <ul>
+            <li>مفهوم الإعلانات الممولة وأنواعها</li>
+            <li>أهداف الحملات الإعلانية</li>
+            <li>Facebook وInstagram وTikTok Ads</li>
+            <li>اختيار الجمهور والميزانية</li>
+            <li>إعداد الـ Creatives وكتابة الإعلان</li>
+            <li>تحليل نتائج الحملات</li>
+            <li>تسعير خدمة الإعلانات</li>
+            <li>أساسيات شحن Visa والشراء أونلاين</li>
+            <li>الوساطة الرقمية ومجالات تقديم الخدمة</li>
+          </ul>
+        </div>
+
+        <div class="course-target">
+          <strong>وش تتعلمي؟</strong><br>
+          كيفاش تفهمي الحملات، تختاري الهدف والجمهور والميزانية،
+          تجهزي الإعلان، تحللي النتائج وتقدمي الخدمة للزبائن.
+        </div>
+
+        <div class="course-actions">
+          <button class="btn btn-primary" onclick="openCourse('دورة الإعلانات الممولة والوساطة الرقمية','2000 دج')">
+            <svg><use href="#i-book"></use></svg>
+            اشتركي في الدورة
+          </button>
+
+          <button class="btn btn-light" onclick="courseDetails('ads')">
+            التفاصيل
+          </button>
+        </div>
+
+      </article>
+
+
+      <!-- ENGLISH -->
+      <article class="course-card reveal">
+
+        <div class="course-top">
+          <div class="course-icon">
+            <svg><use href="#i-globe"></use></svg>
+          </div>
+          <div class="price">3500 دج / مستوى</div>
+        </div>
+
+        <h3>اللغة الإنجليزية</h3>
+
+        <p class="course-description">
+          دورة أونلاين عبر Google Meet، موجهة حسب المستوى، وتبدأ باكتمال الفوج.
+        </p>
+
+        <div class="course-info">
+          <div class="course-info-title">موجهة لـ</div>
+          <ul>
+            <li>المستويات A1 وA2 وB1 وB2 وC1 وC2</li>
+            <li>من تريد تطوير الإنجليزية من مستواها الحالي</li>
+            <li>من تريد الدراسة ضمن مجموعة</li>
+          </ul>
+        </div>
+
+        <div class="course-info">
+          <div class="course-info-title">محتوى الدورة</div>
+          <ul>
+            <li>دروس وتمارين تطبيقية</li>
+            <li>أنشطة وفيديوهات تعليمية</li>
+            <li>تصحيح ومتابعة</li>
+            <li>تفاعل مباشر مع الأستاذة</li>
+            <li>دراسة ضمن مجموعات</li>
+            <li>14 ساعة شهريًا</li>
+            <li>أستاذة متخصصة</li>
+          </ul>
+        </div>
+
+        <div class="course-target">
+          <strong>ملاحظة:</strong><br>
+          الدورة متاحة للتسجيل وتبدأ باكتمال فوج.
+        </div>
+
+        <div class="course-actions">
+          <button class="btn btn-primary" onclick="openCourse('اللغة الإنجليزية','3500 دج / مستوى')">
+            <svg><use href="#i-book"></use></svg>
+            اشتركي في الدورة
+          </button>
+
+          <button class="btn btn-light" onclick="courseDetails('english')">
+            التفاصيل
+          </button>
+        </div>
+
+      </article>
+
+    </div>
   </div>
-
-  <div class="cards">
-   <div class="card unavailable">
-    <span class="tag">غير متاحة حالياً</span>
-    <h3>التجارة الإلكترونية والشحن من تركيا والصين</h3>
-    <p>التسجيل غير مفتوح حالياً.</p>
-   </div>
-
-   <div class="card unavailable">
-    <span class="tag">غير متاحة حالياً</span>
-    <h3>اللغة الإنجليزية</h3>
-    <p>مستويات مختلفة — 3500 دج لكل مستوى — مع أستاذة متخصصة. التسجيل غير مفتوح حالياً.</p>
-   </div>
-
-   <div class="card unavailable">
-    <span class="tag">غير متاحة حالياً</span>
-    <h3>الخياطة ورسم الباترون</h3>
-    <p>حسب المستوى: أطفال، نساء، ومفروشات منزلية. مع أستاذة متخصصة. التسجيل غير مفتوح حالياً.</p>
-   </div>
-
-   <div class="card">
-    <span class="tag">اقتراح</span>
-    <h3>اقترحي دورة أو خدمة</h3>
-    <p>ما تحتاجيش تعرفي اسم الدورة. اكتبي فقط واش حابة تتعلمي أو الخدمة اللي تحتاجيها، ونحن نفهم طلبك وندرس إمكانية توفيرها.</p>
-    <button class="btn" style="margin-top:15px" onclick="openSuggest()">أرسلي اقتراحك</button>
-   </div>
-  </div>
- </div>
 </section>
 
-<section id="services">
- <div class="container">
-  <div class="section-head">
-   <span>الخدمات الرقمية</span>
-   <h2>خدمات DiGitalna</h2>
-   <p>كل خدمة عندها طلب خاص بها باش توصلي لنا احتياجك بالتفصيل.</p>
+
+<!-- OTHER COURSES -->
+<section class="other-courses">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-label">مجالات أخرى</div>
+      <h2>دورات متخصصة مع فريق DiGitalna</h2>
+      <p>
+        بعض المجالات متوفرة حسب توفر الأستاذة والفوج.
+      </p>
+    </div>
+
+    <div class="other-grid">
+
+      <div class="other-card reveal">
+        <div class="other-icon">
+          <svg><use href="#i-globe"></use></svg>
+        </div>
+        <h3>اللغة الفرنسية</h3>
+        <p>غير متاحة حاليًا.</p>
+        <span class="available">غير متاحة حاليًا</span>
+      </div>
+
+      <div class="other-card reveal">
+        <div class="other-icon">
+          <svg><use href="#i-globe"></use></svg>
+        </div>
+        <h3>اللغة الألمانية</h3>
+        <p>غير متاحة حاليًا.</p>
+        <span class="available">غير متاحة حاليًا</span>
+      </div>
+
+      <div class="other-card reveal">
+        <div class="other-icon">
+          <svg><use href="#i-globe"></use></svg>
+        </div>
+        <h3>اللغة الإسبانية</h3>
+        <p>غير متاحة حاليًا.</p>
+        <span class="available">غير متاحة حاليًا</span>
+      </div>
+
+      <div class="other-card reveal">
+        <div class="other-icon">
+          <svg><use href="#i-users"></use></svg>
+        </div>
+        <h3>التجارة الإلكترونية والشحن من تركيا</h3>
+        <p>غير متاحة حاليًا.</p>
+        <span class="available">غير متاحة حاليًا</span>
+      </div>
+
+      <div class="other-card reveal">
+        <div class="other-icon">
+          <svg><use href="#i-spark"></use></svg>
+        </div>
+        <h3>الخياطة والقص والبترون</h3>
+        <p>دورات حسب المستويات، غير متاحة حاليًا.</p>
+        <span class="available">غير متاحة حاليًا</span>
+      </div>
+
+      <div class="other-card reveal">
+        <div class="other-icon">
+          <svg><use href="#i-spark"></use></svg>
+        </div>
+        <h3>الكروشي</h3>
+        <p>غير متاحة حاليًا.</p>
+        <span class="available">غير متاحة حاليًا</span>
+      </div>
+
+    </div>
   </div>
-
-  <div class="service-grid">
-
-   <div class="service">
-    <h3>🎯 استشارة فردية</h3>
-    <div class="from">ابتداءً من 2000 دج</div>
-    <p>تشخيص مشكلتك، فهم مشروعك، وضع خطة وتوجيهك خطوة بخطوة.</p>
-    <button class="btn" onclick="openService('استشارة فردية')">احجزي</button>
-   </div>
-
-   <div class="service">
-    <h3>📣 Facebook / Instagram Sponsorship</h3>
-    <div class="from">ابتداءً من 3000 دج</div>
-    <p>إعداد ومتابعة حملة حسب المنتج والهدف والجمهور.</p>
-    <button class="btn" onclick="openService('سبونسور Facebook / Instagram')">اطلبي الخدمة</button>
-   </div>
-
-   <div class="service">
-    <h3>📊 دراسة السوق والمنافسين</h3>
-    <div class="from">ابتداءً من 800 دج</div>
-    <p>دراسة مشروعك، الجمهور، السوق والمنافسين.</p>
-    <button class="btn" onclick="openService('دراسة السوق والمنافسين')">اطلبي الخدمة</button>
-   </div>
-
-   <div class="service">
-    <h3>🗓️ خطة تسويقية شهرية</h3>
-    <div class="from">ابتداءً من 1500 دج</div>
-    <p>خطة محتوى وتسويق مخصصة حسب مشروعك وأهدافك.</p>
-    <button class="btn" onclick="openService('خطة تسويقية شهرية')">اطلبي الخدمة</button>
-   </div>
-
-   <div class="service">
-    <h3>📱 صناعة منتج رقمي مخصص</h3>
-    <div class="from">ابتداءً من 1000 دج</div>
-    <p>منتجات PDF، planners، منتجات تفاعلية وغيرها حسب فكرتك.</p>
-    <button class="btn" onclick="openService('صناعة منتج رقمي مخصص')">اطلبي الخدمة</button>
-   </div>
-
-   <div class="service">
-    <h3>💻 إنشاء المواقع</h3>
-    <div class="from">السعر حسب المشروع</div>
-    <p>Landing page، موقع خدمات، متجر، Portfolio وغيرها.</p>
-    <button class="btn" onclick="openService('إنشاء موقع إلكتروني')">اطلبي الخدمة</button>
-   </div>
-
-   <div class="service">
-    <h3>💵 شحن الدولار</h3>
-    <div class="from">ابتداءً من 5$</div>
-    <p>الخدمة عبر RedotPay والتواصل لتأكيد التفاصيل والسعر.</p>
-    <button class="btn" onclick="openService('شحن الدولار')">اطلبي الخدمة</button>
-   </div>
-
-   <div class="service">
-    <h3>🛒 التسوق من المواقع</h3>
-    <div class="from">حسب الطلب</div>
-    <p>إرسال رابط المنتج والكمية والمواصفات، ثم التواصل لتأكيد الطلب.</p>
-    <button class="btn" onclick="openService('التسوق من المواقع')">اطلبي الخدمة</button>
-   </div>
-
-   <div class="service">
-    <h3>📄 إعداد تقرير تربص</h3>
-    <div class="from">2500 دج</div>
-    <p>لتخصصات: تسيير واقتصاد، الحقوق، العلوم الشرعية، العلوم الإنسانية، العلوم الاجتماعية.</p>
-    <button class="btn" onclick="openService('إعداد تقرير تربص')">اطلبي الخدمة</button>
-   </div>
-
-   <div class="service">
-    <h3>🎓 مذكرات وبحوث وتقارير</h3>
-    <div class="from">50 دج للصفحة</div>
-    <p>مذكرات تخرج، بحوث، وتقارير تربص حسب المطلوب.</p>
-    <button class="btn" onclick="openService('مذكرات تخرج / بحوث / تقارير تربص')">اطلبي الخدمة</button>
-   </div>
-
-   <div class="service">
-    <h3>📄 CV</h3>
-    <div class="from">حسب الطلب</div>
-    <p>إنشاء أو تحسين السيرة الذاتية بشكل منظم واحترافي.</p>
-    <button class="btn" onclick="openService('إنشاء أو تحسين CV')">اطلبي الخدمة</button>
-   </div>
-
-   <div class="service">
-    <h3>👩‍💻 إدارة الصفحات والطلبات</h3>
-    <div class="from">حسب المشروع</div>
-    <p>إدارة الصفحة، متابعة الرسائل، تأكيد الطلبات وتنظيمها.</p>
-    <button class="btn" onclick="openService('إدارة الصفحات والطلبات')">اطلبي الخدمة</button>
-   </div>
-
-   <div class="service">
-    <h3>🤝 خدمة أخرى</h3>
-    <div class="from">حسب الطلب</div>
-    <p>عندك خدمة أو فكرة أخرى؟ اشرحي لنا احتياجك بدون الحاجة لمعرفة اسم الخدمة.</p>
-    <button class="btn" onclick="openService('خدمة أخرى / طلب خاص')">اشرحي طلبك</button>
-   </div>
-
-  </div>
- </div>
 </section>
 
-<section id="team">
- <div class="container">
-  <div class="section-head">
-   <span>فريق DiGitalna</span>
-   <h2>نربط المشاريع بأشخاص لديهم مهارات</h2>
-   <p>إذا كنت صاحبة مشروع وتحتاجين شخصاً، أو تبحثين عن فرصة للعمل، تواصلي معنا.</p>
-  </div>
 
-  <div class="team-grid">
-   <div class="team-item">📦 إدارة وتأكيد الطلبات</div>
-   <div class="team-item">📱 إدارة الصفحات</div>
-   <div class="team-item">🔗 التسويق بالعمولة</div>
-   <div class="team-item">🎙️ Voice-over</div>
-   <div class="team-item">🎥 UGC</div>
-   <div class="team-item">🧵 خياطة</div>
-   <div class="team-item">📄 كتابة CV</div>
-   <div class="team-item">💼 خدمات رقمية متنوعة</div>
-   <div class="team-item">🤝 ربط أصحاب المشاريع بأصحاب المهارات</div>
-  </div>
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
 
-  <div class="actions" style="justify-content:center">
-   <button class="btn" onclick="openTeam('أحتاج شخصاً للعمل معي')">أحتاج شخصاً للعمل معي</button>
-   <button class="btn light" onclick="openTeam('أريد الانضمام للفريق')">أريد الانضمام للفريق</button>
-  </div>
+    <div class="section-head reveal">
+      <div class="section-label">الخدمات</div>
+      <h2>خدمات رقمية حسب احتياجك</h2>
+      <p>
+        اختاري الخدمة، املئي المعلومات المطلوبة، وبعدها نتواصل معك لتأكيد الطلب.
+      </p>
+    </div>
 
-  <p class="empty-note">
-   تعامل باحترام وثقة، لأننا نربطكم بأشخاص لديهم خبرة ويبحثون عن فرص عمل.
-  </p>
- </div>
+    <div class="service-grid">
+
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg><use href="#i-megaphone"></use></svg>
+        </div>
+        <h3>سبونسور Facebook / Instagram</h3>
+        <p>إعداد حملة إعلانية حسب الهدف والجمهور والميزانية.</p>
+        <div class="service-bottom">
+          <span class="service-price">3000 دج</span>
+          <button class="btn btn-primary" onclick="openService('سبونسور Facebook / Instagram')">
+            <svg><use href="#i-briefcase"></use></svg>
+            احجزي خدمة
+          </button>
+        </div>
+      </article>
+
+
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg><use href="#i-spark"></use></svg>
+        </div>
+        <h3>صناعة منتج رقمي</h3>
+        <p>إنشاء منتج رقمي حسب الفكرة والمجال والسوق المستهدف.</p>
+        <div class="service-bottom">
+          <span class="service-price">ابتداءً من 1000 دج</span>
+          <button class="btn btn-primary" onclick="openService('صناعة منتج رقمي')">
+            <svg><use href="#i-briefcase"></use></svg>
+            احجزي خدمة
+          </button>
+        </div>
+      </article>
+
+
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg><use href="#i-search"></use></svg>
+        </div>
+        <h3>دراسة السوق والمنافسين والجمهور</h3>
+        <p>تحليل السوق والجمهور والمنافسين حسب مشروعك.</p>
+        <div class="service-bottom">
+          <span class="service-price">ابتداءً من 800 دج</span>
+          <button class="btn btn-primary" onclick="openService('دراسة السوق والمنافسين والجمهور')">
+            <svg><use href="#i-briefcase"></use></svg>
+            احجزي خدمة
+          </button>
+        </div>
+      </article>
+
+
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg><use href="#i-credit"></use></svg>
+        </div>
+        <h3>شحن دولار</h3>
+        <p>خدمة شحن حسب المبلغ المطلوب والتفاصيل التي تقدمينها.</p>
+        <div class="service-bottom">
+          <span class="service-price">ابتداءً من $5</span>
+          <button class="btn btn-primary" onclick="openService('شحن دولار')">
+            <svg><use href="#i-briefcase"></use></svg>
+            احجزي خدمة
+          </button>
+        </div>
+      </article>
+
+
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg><use href="#i-chart"></use></svg>
+        </div>
+        <h3>خطة تسويقية شهرية</h3>
+        <p>خطة تسويقية منظمة حسب نشاطك وأهدافك وصفحتك.</p>
+        <div class="service-bottom">
+          <span class="service-price">ابتداءً من 1500 دج</span>
+          <button class="btn btn-primary" onclick="openService('خطة تسويقية شهرية')">
+            <svg><use href="#i-briefcase"></use></svg>
+            احجزي خدمة
+          </button>
+        </div>
+      </article>
+
+
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg><use href="#i-monitor"></use></svg>
+        </div>
+        <h3>إنشاء المواقع</h3>
+        <p>إنشاء مواقع وصفحات هبوط ومواقع خدمات ومتاجر وغيرها.</p>
+        <div class="service-bottom">
+          <span class="service-price">حسب الطلب</span>
+          <button class="btn btn-primary" onclick="openService('إنشاء المواقع')">
+            <svg><use href="#i-briefcase"></use></svg>
+            احجزي خدمة
+          </button>
+        </div>
+      </article>
+
+
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg><use href="#i-file"></use></svg>
+        </div>
+        <h3>إنشاء تقرير / مذكرة</h3>
+        <p>تنظيم وإعداد التقارير والمذكرات حسب المعلومات المطلوبة.</p>
+        <div class="service-bottom">
+          <span class="service-price">2500 دج</span>
+          <button class="btn btn-primary" onclick="openService('إنشاء تقرير / مذكرة')">
+            <svg><use href="#i-briefcase"></use></svg>
+            احجزي خدمة
+          </button>
+        </div>
+      </article>
+
+
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg><use href="#i-file"></use></svg>
+        </div>
+        <h3>مذكرات تخرج / بحوث</h3>
+        <p>مساعدة في التنظيم والدعم حسب التخصص والموضوع وعدد الصفحات.</p>
+        <div class="service-bottom">
+          <span class="service-price">حسب الطلب</span>
+          <button class="btn btn-primary" onclick="openService('مذكرات تخرج / بحوث')">
+            <svg><use href="#i-briefcase"></use></svg>
+            احجزي خدمة
+          </button>
+        </div>
+      </article>
+
+
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg><use href="#i-file"></use></svg>
+        </div>
+        <h3>CV</h3>
+        <p>إنشاء سيرة ذاتية منظمة حسب التخصص واللغة.</p>
+        <div class="service-bottom">
+          <span class="service-price">حسب الطلب</span>
+          <button class="btn btn-primary" onclick="openService('CV')">
+            <svg><use href="#i-briefcase"></use></svg>
+            احجزي خدمة
+          </button>
+        </div>
+      </article>
+
+
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg><use href="#i-globe"></use></svg>
+        </div>
+        <h3>Shopping من المواقع</h3>
+        <p>المساعدة في طلب المنتجات من المواقع حسب الرابط والتفاصيل.</p>
+        <div class="service-bottom">
+          <span class="service-price">حسب الطلب</span>
+          <button class="btn btn-primary" onclick="openService('Shopping من المواقع')">
+            <svg><use href="#i-briefcase"></use></svg>
+            احجزي خدمة
+          </button>
+        </div>
+      </article>
+
+
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg><use href="#i-users"></use></svg>
+        </div>
+        <h3>خدمات الفريق</h3>
+        <p>ربطك بأشخاص لديهم خبرة في مجالات وخدمات مختلفة.</p>
+        <div class="service-bottom">
+          <span class="service-price">حسب الخدمة</span>
+          <button class="btn btn-primary" onclick="openService('خدمات الفريق')">
+            <svg><use href="#i-briefcase"></use></svg>
+            احجزي خدمة
+          </button>
+        </div>
+      </article>
+
+
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg><use href="#i-lightbulb"></use></svg>
+        </div>
+        <h3>خدمة أخرى</h3>
+        <p>عندك طلب مختلف؟ اشرحي لنا واش تحتاجي.</p>
+        <div class="service-bottom">
+          <span class="service-price">حسب الطلب</span>
+          <button class="btn btn-primary" onclick="openService('خدمة أخرى')">
+            <svg><use href="#i-briefcase"></use></svg>
+            احجزي خدمة
+          </button>
+        </div>
+      </article>
+
+    </div>
+  </div>
 </section>
 
-<section id="about" class="about">
- <div class="container">
-  <div class="section-head">
-   <span>من نحن</span>
-   <h2>DiGitalna</h2>
-  </div>
 
-  <div class="about-box">
-   <p>
-    DiGitalna منصة رقمية تجمع بين التعليم، الخدمات الرقمية والاستشارات،
-    بهدف مساعدة أصحاب المشاريع، المستقلين وصناع المحتوى على تطوير مهاراتهم
-    والعمل بشكل أكثر تنظيماً في العالم الرقمي.
-   </p>
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="container">
 
-   <ul class="list">
-    <li>ماستر في العلاقات العامة</li>
-    <li>تخصص/دبلوم في التسويق</li>
-    <li>خبرة ميدانية في المجال التجاري والتسويق</li>
-    <li>استشارات ومتابعة فردية أونلاين</li>
-    <li>دورات عملية وتطبيقية</li>
-   </ul>
+    <div class="section-head reveal">
+      <div class="section-label">فريق DiGitalna</div>
+      <h2>مجموعة من التخصصات في مكان واحد</h2>
+    </div>
+
+    <div class="team-box reveal">
+
+      <div class="team-avatar">D</div>
+
+      <div>
+        <h3>DiGitalna</h3>
+
+        <p>
+          أنا ميرا، مؤسسة DiGitalna.
+          متخصصة في التسويق والعلاقات العامة، وأقدّم بنفسي دورات وخدمات
+          في مجالات التسويق، التجارة والمنتجات الرقمية.
+        </p>
+
+        <p>
+          أما باقي المجالات والدورات، فتقدّمها مجموعة من الأساتذة والمتخصصين
+          ضمن فريق DiGitalna، كلٌّ حسب اختصاصه وخبرته.
+        </p>
+
+        <p>
+          مع DiGitalna، تلقاو التعلّم والخدمات في مكان واحد.
+        </p>
+      </div>
+
+    </div>
   </div>
- </div>
 </section>
 
-<section id="reviews">
- <div class="container">
-  <div class="section-head">
-   <span>آراء العميلات</span>
-   <h2>تجارب من العميلات</h2>
-  </div>
 
-  <div class="review-wrap">
-   <div class="review">
-    <p id="reviewText"></p>
-   </div>
-   <div class="review-controls">
-    <button onclick="prevReview()">‹</button>
-    <button onclick="nextReview()">›</button>
-   </div>
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-label">عن DiGitalna</div>
+      <h2>نتعلمو ونطبقو ونطورو المهارات</h2>
+    </div>
+
+    <div class="about-grid">
+
+      <div class="about-card reveal">
+        <h3>عن ميرا</h3>
+
+        <p>
+          مؤسسة DiGitalna ومتخصصة في التسويق والعلاقات العامة،
+          مع خبرة في التجارة والتسويق والعمل أونلاين.
+        </p>
+
+        <div class="about-list">
+          <div>
+            <svg><use href="#i-check"></use></svg>
+            ماستر في العلاقات العامة
+          </div>
+
+          <div>
+            <svg><use href="#i-check"></use></svg>
+            ديبلوم في التسويق
+          </div>
+
+          <div>
+            <svg><use href="#i-check"></use></svg>
+            خبرة ميدانية في التجارة والتسويق
+          </div>
+
+          <div>
+            <svg><use href="#i-check"></use></svg>
+            استشارات ومتابعة أونلاين
+          </div>
+
+          <div>
+            <svg><use href="#i-check"></use></svg>
+            دورات عملية وتطبيقات
+          </div>
+        </div>
+      </div>
+
+
+      <div class="about-card reveal">
+        <h3>طريقة DiGitalna</h3>
+
+        <p>
+          الهدف هو إعطاؤك المعرفة بطريقة عملية تساعدك تفهمي المجال
+          وتقدري تطبقيه على مشروعك أو مهارتك.
+        </p>
+
+        <div class="about-list">
+
+          <div>
+            <svg><use href="#i-check"></use></svg>
+            شرح من الصفر
+          </div>
+
+          <div>
+            <svg><use href="#i-check"></use></svg>
+            تطبيقات وأمثلة
+          </div>
+
+          <div>
+            <svg><use href="#i-check"></use></svg>
+            متابعة حسب احتياج المتدربة
+          </div>
+
+          <div>
+            <svg><use href="#i-check"></use></svg>
+            مجالات متنوعة
+          </div>
+
+          <div>
+            <svg><use href="#i-check"></use></svg>
+            فريق متخصص حسب كل مجال
+          </div>
+
+        </div>
+      </div>
+
+    </div>
   </div>
- </div>
 </section>
 
-<section id="social">
- <div class="container">
-  <div class="section-head">
-   <span>منصاتنا</span>
-   <h2>تواصلي معنا أينما كنتِ</h2>
-  </div>
 
-  <div class="social-grid">
-   <a class="social" target="_blank" href="https://www.facebook.com/digitalnaaa">Facebook Profile</a>
-   <a class="social" target="_blank" href="https://www.facebook.com/profile.php?id=61572114668211">Facebook Page</a>
-   <a class="social" target="_blank" href="https://facebook.com/groups/1527288455808993/">Facebook Group</a>
-   <a class="social" target="_blank" href="https://www.instagram.com/miradigitalna?stkn=azl6MDV5cDdxc2V4">Instagram</a>
-   <a class="social" target="_blank" href="https://www.tiktok.com/@mira.digitalna">TikTok</a>
-   <a class="social" target="_blank" href="https://youtube.com/@miradigitalna?si=qqfyUeU3tHQAG57u">YouTube</a>
-   <a class="social" target="_blank" href="https://t.me/miroushette">Telegram</a>
-   <a class="social" target="_blank" href="https://wa.me/message/BONEOI6EZJWOF1">WhatsApp</a>
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-label">آراء المتدربات</div>
+      <h2>من تجارب المتدربات</h2>
+    </div>
+
+    <div class="review-box reveal">
+
+      <div class="review-mark">“</div>
+
+      <div class="review-text" id="reviewText"></div>
+
+      <div class="review-dots" id="reviewDots"></div>
+
+    </div>
   </div>
- </div>
 </section>
 
-<section id="contact">
- <div class="container">
-  <div class="cta">
-   <h2>عندك مشروع أو فكرة؟</h2>
-   <p>ما تحتاجيش تعرفي اسم الخدمة. اشرحي لنا فقط واش حابة، ونحن نوجهوك.</p>
-   <div class="actions" style="justify-content:center">
-    <button class="btn" onclick="openService('خدمة أخرى / طلب خاص')">أرسلي طلبك</button>
-    <a class="btn light" target="_blank" href="https://wa.me/message/BONEOI6EZJWOF1">تواصلي عبر WhatsApp</a>
-   </div>
+
+<!-- SOCIAL -->
+<section class="social" id="social">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-label">منصاتنا</div>
+      <h2>تابعينا وين تلقاي DiGitalna</h2>
+    </div>
+
+    <div class="social-grid">
+
+      <a class="social-card facebook reveal"
+         href="https://www.facebook.com/digitalnaaa"
+         target="_blank">
+        <svg><use href="#i-facebook"></use></svg>
+        <span>Facebook</span>
+      </a>
+
+      <a class="social-card facebook reveal"
+         href="https://www.facebook.com/profile.php?id=61572114668211"
+         target="_blank">
+        <svg><use href="#i-facebook"></use></svg>
+        <span>Facebook Page</span>
+      </a>
+
+      <a class="social-card group reveal"
+         href="https://facebook.com/groups/1527288455808993/"
+         target="_blank">
+        <svg><use href="#i-users2"></use></svg>
+        <span>Facebook Group</span>
+      </a>
+
+      <a class="social-card instagram reveal"
+         href="https://www.instagram.com/miradigitalna?stkn=azl6MDV5cDdxc2V4"
+         target="_blank">
+        <svg><use href="#i-instagram"></use></svg>
+        <span>Instagram</span>
+      </a>
+
+      <a class="social-card tiktok reveal"
+         href="https://www.tiktok.com/@mira.digitalna"
+         target="_blank">
+        <svg><use href="#i-tiktok"></use></svg>
+        <span>TikTok</span>
+      </a>
+
+      <a class="social-card youtube reveal"
+         href="https://youtube.com/@miradigitalna?si=qqfyUeU3tHQAG57u"
+         target="_blank">
+        <svg><use href="#i-youtube"></use></svg>
+        <span>YouTube</span>
+      </a>
+
+      <a class="social-card telegram reveal"
+         href="https://t.me/miroushette"
+         target="_blank">
+        <svg><use href="#i-telegram"></use></svg>
+        <span>Telegram</span>
+      </a>
+
+    </div>
   </div>
- </div>
 </section>
+
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+
+    <div class="contact-box reveal">
+
+      <div>
+        <h2>عندك سؤال أو طلب؟</h2>
+        <p>
+          تواصلي معنا ونوجهوك حسب الخدمة أو الدورة المناسبة.
+        </p>
+      </div>
+
+      <button class="btn" onclick="openSuggestion()">
+        <svg><use href="#i-send"></use></svg>
+        اقترحي دورة أو خدمة
+      </button>
+
+    </div>
+
+  </div>
+</section>
+
+</main>
+
 
 <footer>
- <div class="logo">DiGitalna</div>
- <p>Digital Skills • Marketing • Digital Services</p>
- <p>© 2026 DiGitalna — جميع الحقوق محفوظة</p>
+  <div class="container footer">
+    <div class="footer-logo">D<span class="dot"></span>Gitalna</div>
+    <p>© 2026 DiGitalna — جميع الحقوق محفوظة</p>
+  </div>
 </footer>
 
-<a class="float-wa" target="_blank" href="https://wa.me/message/BONEOI6EZJWOF1">☏</a>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/message/BONEOI6EZJWOF1"
+   target="_blank"
+   class="whatsapp-float"
+   aria-label="WhatsApp">
+  <svg><use href="#i-whatsapp"></use></svg>
+</a>
 
 
 <!-- COURSE MODAL -->
 <div class="modal" id="courseModal">
- <div class="modal-box">
-  <button class="modal-close" onclick="closeModal('courseModal')">×</button>
 
-  <div class="steps">
-   <div class="step active" id="cs1">1. الشروط</div>
-   <div class="step" id="cs2">2. المعلومات</div>
-   <div class="step" id="cs3">3. التأكيد</div>
-  </div>
+  <div class="modal-box">
 
-  <div class="modal-page active" id="coursePage1">
-   <h2 id="courseTitle"></h2>
-   <p class="modal-sub">قبل إرسال طلب التسجيل، اقرئي الشروط.</p>
+    <div class="modal-head">
+      <div>
+        <h2 id="courseTitle">التسجيل</h2>
+        <p>أكملي المعلومات لإرسال طلب التسجيل.</p>
+      </div>
 
-   <div class="terms">
-    <ul>
-     <li>التسجيل في الدورة للاستعمال الشخصي والتعلم فقط.</li>
-     <li>ممنوع نسخ أو إعادة بيع أو إعادة نشر محتوى الدورة.</li>
-     <li>ممنوع تقديم محتوى الدورة للغير كدورة أو تدريب.</li>
-     <li>المحتوى التعليمي لا يمثل ضماناً لتحقيق أرباح أو نتائج محددة.</li>
-     <li>النتائج تختلف حسب التطبيق، المجال، السوق، المنتج، الميزانية والجهد.</li>
-     <li>المتابعة الشخصية هدفها التوجيه والإجابة والمساعدة على التطبيق وليست ضماناً للنتيجة.</li>
-     <li>الطلب المرسل عبر الموقع لا يعتبر تأكيداً نهائياً للتسجيل.</li>
-     <li>يتم التواصل معك بعد إرسال الطلب لتأكيد التسجيل والتفاصيل.</li>
-     <li>عند التسجيل في أكثر من دورة يمكن الاستفادة من تخفيض خاص حسب عدد الدورات.</li>
-     <li>يجب احترام محتوى الدورة وحقوق DiGitalna وعدم مشاركته مع الآخرين.</li>
-    </ul>
-   </div>
-
-   <label class="check">
-    <input type="checkbox" id="acceptCourse">
-    <span>قرأت الشروط وفهمتها وأوافق عليها.</span>
-   </label>
-
-   <button class="btn" style="width:100%" onclick="courseNext()">أوافق وأكمل التسجيل</button>
-  </div>
-
-  <div class="modal-page" id="coursePage2">
-   <h2>معلومات التسجيل</h2>
-   <p class="modal-sub">املئي المعلومات اللي تساعدنا نفهم هدفك.</p>
-
-   <form id="courseForm">
-    <div class="form-grid">
-     <div class="field">
-      <label>الاسم الكامل *</label>
-      <input required id="c_name">
-     </div>
-
-     <div class="field">
-      <label>رقم التواصل *</label>
-      <input required id="c_phone">
-     </div>
-
-     <div class="field">
-      <label>الولاية</label>
-      <input id="c_wilaya">
-     </div>
-
-     <div class="field">
-      <label>العمر</label>
-      <input type="number" id="c_age">
-     </div>
-
-     <div class="field full">
-      <label>الدورة</label>
-      <input id="c_course" readonly>
-     </div>
-
-     <div class="field full">
-      <label>هل عندك مشروع حالياً؟</label>
-      <input id="c_project" placeholder="مثلاً: متجر، صفحة ملابس، Freelance...">
-     </div>
-
-     <div class="field">
-      <label>اسم الصفحة</label>
-      <input id="c_page">
-     </div>
-
-     <div class="field">
-      <label>رابط الصفحة</label>
-      <input id="c_link">
-     </div>
-
-     <div class="field full">
-      <label>ما هو هدفك من الدورة؟ *</label>
-      <textarea required id="c_goal" placeholder="اكتبي واش حابة تتعلمي أو توصلي له..."></textarea>
-     </div>
-
-     <div class="field full">
-      <label>ملاحظات إضافية</label>
-      <textarea id="c_notes"></textarea>
-     </div>
+      <button class="modal-close" onclick="closeModal('courseModal')">
+        <svg><use href="#i-x"></use></svg>
+      </button>
     </div>
 
-    <button class="btn" style="width:100%">إرسال طلب التسجيل</button>
-   </form>
-  </div>
 
-  <div class="modal-page" id="coursePage3">
-   <div class="success">
-    <div class="icon">✓</div>
-    <h3>طلبك جاهز</h3>
-    <p>تم تجهيز رسالة طلب التسجيل. انسخيها ثم افتحي WhatsApp وأرسليها لنا.</p>
-    <button class="btn" onclick="sendCourseWhatsApp()">نسخ الطلب وفتح WhatsApp</button>
-   </div>
+    <!-- STEP 1 -->
+    <div class="modal-step active" id="courseStep1">
+
+      <div class="notice">
+        <strong>قبل التسجيل:</strong><br>
+        التسجيل عبر إرسال طلب فقط، وبعدها يتم التواصل معك لتأكيد التسجيل
+        وشرح خطوات إتمام العملية.
+      </div>
+
+      <button class="btn btn-primary" style="width:100%" onclick="courseNext()">
+        متابعة التسجيل
+        <svg><use href="#i-arrow"></use></svg>
+      </button>
+
+    </div>
+
+
+    <!-- STEP 2 -->
+    <div class="modal-step" id="courseStep2">
+
+      <form id="courseForm">
+
+        <div class="form-grid">
+
+          <div class="field full">
+            <label>الاسم واللقب</label>
+            <input id="c_fullname" required placeholder="اكتبي الاسم واللقب">
+          </div>
+
+          <div class="field full">
+            <label>رقم الهاتف</label>
+            <input id="c_phone" type="tel" required placeholder="رقم الهاتف">
+          </div>
+
+          <div class="field full">
+            <label>الدورة</label>
+            <select id="c_course" required>
+              <option value="">اختاري</option>
+              <option>دورة التسويق وصناعة المحتوى والإعلانات الممولة</option>
+              <option>صناعة المنتجات الرقمية بالذكاء الاصطناعي وتسويقها</option>
+              <option>دورة إنشاء المواقع بـ HTML + CSS + JavaScript والذكاء الاصطناعي</option>
+              <option>دورة الإعلانات الممولة والوساطة الرقمية</option>
+              <option>اللغة الإنجليزية</option>
+            </select>
+          </div>
+
+
+          <!-- ENGLISH LEVEL -->
+          <div class="field full" id="englishLevelField" style="display:none;">
+            <label>المستوى المطلوب</label>
+            <select id="c_english_level">
+              <option value="">اختاري المستوى</option>
+              <option>A1</option>
+              <option>A2</option>
+              <option>B1</option>
+              <option>B2</option>
+              <option>C1</option>
+              <option>C2</option>
+            </select>
+          </div>
+
+          <div class="field full" id="englishCurrentField" style="display:none;">
+            <label>ما هو مستواك الحالي؟</label>
+            <select id="c_english_current">
+              <option value="">اختاري مستواك الحالي</option>
+              <option>A1</option>
+              <option>A2</option>
+              <option>B1</option>
+              <option>B2</option>
+              <option>C1</option>
+              <option>C2</option>
+              <option>لا أعرف مستواي</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label>ما هو مشروعك أو مجالك؟</label>
+            <input id="c_project">
+          </div>
+
+          <div class="field full">
+            <label>تفاصيل إضافية / المشكلة التي تريدين حلها</label>
+            <textarea id="c_details" required></textarea>
+          </div>
+
+        </div>
+
+
+        <!-- ENGLISH CONDITIONS -->
+        <div class="condition-box" id="englishConditions" style="display:none;">
+          <h4>شروط دورة اللغة الإنجليزية</h4>
+          <ul>
+            <li>توفر اتصال جيد بالإنترنت.</li>
+            <li>الالتزام بحضور الحصص.</li>
+            <li>الدراسة تكون عبر Google Meet.</li>
+            <li>الدورة تبدأ باكتمال الفوج.</li>
+          </ul>
+        </div>
+
+
+        <!-- GENERAL CONDITIONS -->
+        <div class="condition-box">
+          <h4>شروط التسجيل</h4>
+
+          <ul>
+            <li>الدورات مخصصة للتعلم والاستعمال الشخصي.</li>
+            <li>يُمنع نسخ محتوى الدورة أو إعادة بيعه أو تدريسه أو نشره.</li>
+            <li>النتائج تختلف حسب التطبيق والمجال والسوق والمنتج والميزانية والجهد.</li>
+            <li>المتابعة الشخصية مخصصة للتوجيه والمساعدة حسب احتياج المتدربة.</li>
+            <li>إرسال الطلب لا يعني تأكيد التسجيل النهائي.</li>
+            <li>يتم التواصل معك لتأكيد التسجيل وشرح الخطوات.</li>
+            <li>يوجد تخفيض عند التسجيل في أكثر من دورة.</li>
+            <li>يجب احترام محتوى وحقوق DiGitalna.</li>
+          </ul>
+        </div>
+
+
+        <div class="form-actions">
+
+          <button type="button" class="btn btn-light" onclick="courseBack()">
+            رجوع
+          </button>
+
+          <button type="submit" class="btn btn-primary">
+            متابعة
+            <svg><use href="#i-arrow"></use></svg>
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+
+    <!-- STEP 3 -->
+    <div class="modal-step" id="courseStep3">
+
+      <div class="success">
+
+        <div class="success-icon">
+          <svg><use href="#i-check"></use></svg>
+        </div>
+
+        <h3>تم تجهيز طلبك</h3>
+
+        <p>
+          اضغطي على الزر لإرسال الطلب عبر WhatsApp.
+        </p>
+
+        <button class="btn btn-primary"
+                style="margin-top:20px;width:100%"
+                onclick="sendCourseWhatsApp()">
+          <svg><use href="#i-whatsapp"></use></svg>
+          إرسال الطلب عبر WhatsApp
+        </button>
+
+      </div>
+
+    </div>
+
   </div>
- </div>
 </div>
 
 
 <!-- SERVICE MODAL -->
 <div class="modal" id="serviceModal">
- <div class="modal-box">
-  <button class="modal-close" onclick="closeModal('serviceModal')">×</button>
 
-  <h2 id="serviceTitle">طلب خدمة</h2>
-  <p class="modal-sub">هذه الاستمارة تتغير حسب نوع الخدمة المختارة.</p>
+  <div class="modal-box">
 
-  <form id="serviceForm">
+    <div class="modal-head">
+      <div>
+        <h2 id="serviceTitle">حجز خدمة</h2>
+        <p>أكملي المعلومات المطلوبة للخدمة.</p>
+      </div>
 
-   <div class="form-grid">
-
-    <div class="field">
-     <label>الاسم الكامل *</label>
-     <input required id="s_name">
+      <button class="modal-close" onclick="closeModal('serviceModal')">
+        <svg><use href="#i-x"></use></svg>
+      </button>
     </div>
 
-    <div class="field">
-     <label>رقم التواصل *</label>
-     <input required id="s_phone">
-    </div>
 
-    <div class="field">
-     <label>الولاية</label>
-     <input id="s_wilaya">
-    </div>
+    <form id="serviceForm">
 
-    <div class="field full">
-     <label>نوع الخدمة</label>
-     <input id="s_service" readonly>
-    </div>
+      <div class="form-grid">
 
-    <!-- SPONSOR -->
-    <div id="sponsorFields" class="field full" style="display:none">
-     <div class="form-grid">
-      <div class="field">
-       <label>نوع المنتج / الخدمة *</label>
-       <input id="sp_product">
+        <div class="field full">
+          <label>الاسم واللقب</label>
+          <input id="s_fullname" required placeholder="اكتبي الاسم واللقب">
+        </div>
+
+        <div id="dynamicFields" class="field full"></div>
+
       </div>
 
-      <div class="field">
-       <label>سعر المنتج</label>
-       <input id="sp_price">
+
+      <div class="form-actions">
+
+        <button type="button" class="btn btn-light" onclick="closeModal('serviceModal')">
+          إلغاء
+        </button>
+
+        <button type="submit" class="btn btn-primary">
+          إرسال الطلب
+          <svg><use href="#i-whatsapp"></use></svg>
+        </button>
+
       </div>
 
-      <div class="field">
-       <label>هدف الحملة *</label>
-       <select id="sp_goal">
-        <option value="">اختاري</option>
-        <option>تفاعل</option>
-        <option>رسائل</option>
-        <option>مبيعات</option>
-        <option>زيارات للصفحة</option>
-        <option>زيارات للموقع</option>
-        <option>هدف آخر</option>
-       </select>
-      </div>
+    </form>
 
-      <div class="field">
-       <label>الجمهور المستهدف</label>
-       <input id="sp_audience">
-      </div>
-
-      <div class="field">
-       <label>الولايات / الدول المستهدفة</label>
-       <input id="sp_location">
-      </div>
-
-      <div class="field">
-       <label>ميزانية الإعلان</label>
-       <input id="sp_budget">
-      </div>
-
-      <div class="field full">
-       <label>رابط الصفحة التي يوجد فيها المنتج *</label>
-       <input id="sp_page">
-      </div>
-
-      <div class="field full">
-       <label>رابط المنشور / المنتج إن وجد</label>
-       <input id="sp_post">
-      </div>
-
-      <div class="field full">
-       <label>هل لديك صورة أو فيديو للإعلان؟</label>
-       <input id="sp_creative">
-      </div>
-     </div>
-    </div>
-
-    <!-- ACADEMIC -->
-    <div id="academicFields" class="field full" style="display:none">
-     <div class="form-grid">
-      <div class="field">
-       <label>نوع العمل</label>
-       <input id="ac_type">
-      </div>
-
-      <div class="field">
-       <label>التخصص</label>
-       <input id="ac_major">
-      </div>
-
-      <div class="field">
-       <label>الجامعة</label>
-       <input id="ac_university">
-      </div>
-
-      <div class="field">
-       <label>المستوى</label>
-       <input id="ac_level">
-      </div>
-
-      <div class="field">
-       <label>عدد الصفحات</label>
-       <input id="ac_pages">
-      </div>
-
-      <div class="field">
-       <label>اللغة</label>
-       <input id="ac_language">
-      </div>
-
-      <div class="field full">
-       <label>موضوع العمل</label>
-       <input id="ac_topic">
-      </div>
-
-      <div class="field full">
-       <label>تعليمات الأستاذ / المطلوب</label>
-       <textarea id="ac_requirements"></textarea>
-      </div>
-
-      <div class="field full">
-       <label>موعد التسليم</label>
-       <input id="ac_deadline">
-      </div>
-     </div>
-    </div>
-
-    <div class="field full">
-     <label>رابط الصفحة / المشروع إن وجد</label>
-     <input id="s_link">
-    </div>
-
-    <div class="field full">
-     <label>اشرحي لنا طلبك بالتفصيل *</label>
-     <textarea required id="s_details" placeholder="اكتبي كل التفاصيل التي تساعدنا نفهم الخدمة المطلوبة..."></textarea>
-    </div>
-
-    <div class="field full">
-     <label>الهدف من الخدمة</label>
-     <textarea id="s_goal"></textarea>
-    </div>
-
-   </div>
-
-   <div class="terms">
-    <b>ملاحظات وشروط الخدمة:</b>
-    <ul>
-     <li>الأسعار المذكورة هي أسعار ابتدائية ما لم يذكر سعر ثابت.</li>
-     <li>السعر النهائي يمكن أن يختلف حسب تفاصيل الطلب وحجم العمل.</li>
-     <li>إرسال الطلب لا يعني تأكيد الحجز أو بدء العمل مباشرة.</li>
-     <li>يتم التواصل معك عبر WhatsApp بعد مراجعة المعلومات.</li>
-     <li>يجب إرسال معلومات صحيحة وكاملة قدر الإمكان.</li>
-     <li>في الإعلانات الممولة، النتائج تختلف حسب المنتج والجمهور والكرياتيف والميزانية وطريقة التعامل مع العملاء.</li>
-     <li>في الخدمات الأكاديمية، تقدم الخدمة في إطار المساعدة البحثية والتنظيمية والتنسيق وفق المطلوب.</li>
-    </ul>
-   </div>
-
-   <label class="check">
-    <input type="checkbox" required>
-    <span>قرأت الشروط والمعلومات وأوافق عليها.</span>
-   </label>
-
-   <button class="btn" style="width:100%">إرسال طلب الخدمة</button>
-  </form>
- </div>
+  </div>
 </div>
 
 
-<!-- SUGGEST MODAL -->
-<div class="modal" id="suggestModal">
- <div class="modal-box">
-  <button class="modal-close" onclick="closeModal('suggestModal')">×</button>
+<!-- SUGGESTION MODAL -->
+<div class="modal" id="suggestionModal">
 
-  <h2>💡 اقترحي دورة أو خدمة</h2>
-  <p class="modal-sub">
-   ما تحتاجيش تعرفي الاسم. اكتبي فقط واش حابة تتعلمي أو واش تحتاجي، ونحن نفهم طلبك.
-  </p>
+  <div class="modal-box">
 
-  <form id="suggestForm">
-   <div class="form-grid">
-    <div class="field">
-     <label>الاسم</label>
-     <input id="g_name">
+    <div class="modal-head">
+      <div>
+        <h2>اقترحي دورة أو خدمة</h2>
+        <p>اكتبي فقط واش حابة تلقاي عندنا.</p>
+      </div>
+
+      <button class="modal-close" onclick="closeModal('suggestionModal')">
+        <svg><use href="#i-x"></use></svg>
+      </button>
     </div>
 
-    <div class="field">
-     <label>رقم التواصل *</label>
-     <input required id="g_phone">
+    <form id="suggestionForm">
+
+      <div class="field">
+        <label>اقتراحك أو طلبك</label>
+        <textarea id="suggestionText"
+                  required
+                  style="min-height:180px"
+                  placeholder="اكتبي الدورة أو الخدمة أو الفكرة التي تقترحينها..."></textarea>
+      </div>
+
+      <div class="form-actions">
+
+        <button type="button" class="btn btn-light" onclick="closeModal('suggestionModal')">
+          إلغاء
+        </button>
+
+        <button type="submit" class="btn btn-primary">
+          إرسال
+          <svg><use href="#i-send"></use></svg>
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+
+<!-- DETAILS MODAL -->
+<div class="modal" id="detailsModal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <div>
+        <h2 id="detailsTitle"></h2>
+      </div>
+
+      <button class="modal-close" onclick="closeModal('detailsModal')">
+        <svg><use href="#i-x"></use></svg>
+      </button>
     </div>
 
-    <div class="field">
-     <label>الولاية</label>
-     <input id="g_wilaya">
-    </div>
+    <div id="detailsContent"></div>
 
-    <div class="field">
-     <label>عندك مشروع؟</label>
-     <input id="g_project">
-    </div>
-
-    <div class="field full">
-     <label>واش حابة تتعلمي أو واش الخدمة اللي تحتاجيها؟ *</label>
-     <textarea required id="g_need" placeholder="مثلاً: حابة نتعلم كيفاش نصنع منتجات رقمية ونبيعهم للخارج..."></textarea>
-    </div>
-
-    <div class="field full">
-     <label>رابط الصفحة أو المشروع إن وجد</label>
-     <input id="g_link">
-    </div>
-
-    <div class="field full">
-     <label>تفاصيل إضافية</label>
-     <textarea id="g_notes"></textarea>
-    </div>
-   </div>
-
-   <button class="btn" style="width:100%">إرسال الاقتراح</button>
-  </form>
- </div>
+  </div>
 </div>
 
 
 <script>
-const WA="https://wa.me/message/BONEOI6EZJWOF1";
+
+/* ===== MENU ===== */
 
 function openMenu(){
- document.getElementById("side").classList.add("active");
- document.getElementById("overlay").classList.add("active");
+  document.getElementById("sideMenu").classList.add("open");
 }
+
 function closeMenu(){
- document.getElementById("side").classList.remove("active");
- document.getElementById("overlay").classList.remove("active");
+  document.getElementById("sideMenu").classList.remove("open");
 }
+
+
+/* ===== MODALS ===== */
+
 function closeModal(id){
- document.getElementById(id).classList.remove("show");
+  document.getElementById(id).classList.remove("show");
 }
+
+
+/* ===== COURSE ===== */
 
 let selectedCourse="";
 let selectedPrice="";
 let courseMessage="";
 
+
 function openCourse(course,price){
- selectedCourse=course;
- selectedPrice=price;
- document.getElementById("courseTitle").textContent=course;
- document.getElementById("c_course").value=course+" — "+price;
 
- document.getElementById("coursePage1").classList.add("active");
- document.getElementById("coursePage2").classList.remove("active");
- document.getElementById("coursePage3").classList.remove("active");
+  selectedCourse=course;
+  selectedPrice=price;
 
- document.getElementById("cs1").classList.add("active");
- document.getElementById("cs2").classList.remove("active");
- document.getElementById("cs3").classList.remove("active");
+  document.getElementById("courseTitle").textContent=course;
 
- document.getElementById("acceptCourse").checked=false;
- document.getElementById("courseModal").classList.add("show");
+  document.getElementById("courseStep1").classList.add("active");
+  document.getElementById("courseStep2").classList.remove("active");
+  document.getElementById("courseStep3").classList.remove("active");
+
+  document.getElementById("courseForm").reset();
+
+  document.getElementById("c_course").value=course;
+
+  hideEnglishFields();
+
+  document.getElementById("courseModal").classList.add("show");
 }
+
 
 function courseNext(){
- if(!document.getElementById("acceptCourse").checked){
-  alert("لازم تقراي وتوافقي على الشروط أولاً.");
-  return;
- }
- document.getElementById("coursePage1").classList.remove("active");
- document.getElementById("coursePage2").classList.add("active");
- document.getElementById("cs1").classList.remove("active");
- document.getElementById("cs2").classList.add("active");
+
+  document.getElementById("courseStep1").classList.remove("active");
+  document.getElementById("courseStep2").classList.add("active");
+
+  document.getElementById("c_course").value=selectedCourse;
+
+  updateEnglishFields();
 }
+
+
+function courseBack(){
+
+  document.getElementById("courseStep2").classList.remove("active");
+  document.getElementById("courseStep1").classList.add("active");
+
+}
+
+
+function hideEnglishFields(){
+
+  document.getElementById("englishLevelField").style.display="none";
+  document.getElementById("englishCurrentField").style.display="none";
+  document.getElementById("englishConditions").style.display="none";
+
+  document.getElementById("c_english_level").required=false;
+  document.getElementById("c_english_current").required=false;
+
+}
+
+
+function updateEnglishFields(){
+
+  const isEnglish=
+    document.getElementById("c_course").value==="اللغة الإنجليزية";
+
+  document.getElementById("englishLevelField").style.display=
+    isEnglish ? "flex" : "none";
+
+  document.getElementById("englishCurrentField").style.display=
+    isEnglish ? "flex" : "none";
+
+  document.getElementById("englishConditions").style.display=
+    isEnglish ? "block" : "none";
+
+  document.getElementById("c_english_level").required=isEnglish;
+  document.getElementById("c_english_current").required=isEnglish;
+}
+
+
+document.getElementById("c_course").addEventListener("change",function(){
+
+  updateEnglishFields();
+
+});
+
 
 document.getElementById("courseForm").addEventListener("submit",function(e){
- e.preventDefault();
 
- courseMessage=
-`🌷 طلب تسجيل في DiGitalna
+  e.preventDefault();
 
-الدورة: ${selectedCourse}
-السعر: ${selectedPrice}
+  const fullname=
+    document.getElementById("c_fullname").value.trim();
 
-الاسم: ${v("c_name")}
-رقم التواصل: ${v("c_phone")}
-الولاية: ${v("c_wilaya")}
-العمر: ${v("c_age")}
+  const phone=
+    document.getElementById("c_phone").value.trim();
 
-المشروع: ${v("c_project")}
-اسم الصفحة: ${v("c_page")}
-رابط الصفحة: ${v("c_link")}
+  const course=
+    document.getElementById("c_course").value.trim();
 
-الهدف من الدورة:
-${v("c_goal")}
+  const project=
+    document.getElementById("c_project").value.trim();
 
-ملاحظات:
-${v("c_notes")}
+  const details=
+    document.getElementById("c_details").value.trim();
 
-أوافق على شروط الدورة وأرغب في تأكيد تفاصيل التسجيل.`;
+  const englishLevel=
+    document.getElementById("c_english_level").value.trim();
 
- document.getElementById("coursePage2").classList.remove("active");
- document.getElementById("coursePage3").classList.add("active");
- document.getElementById("cs2").classList.remove("active");
- document.getElementById("cs3").classList.add("active");
+  const englishCurrent=
+    document.getElementById("c_english_current").value.trim();
+
+
+  courseMessage=
+`طلب تسجيل جديد - DiGitalna
+
+الدورة:
+${course}
+
+السعر:
+${selectedPrice}
+
+الاسم واللقب:
+${fullname}
+
+رقم الهاتف:
+${phone}
+
+${course==="اللغة الإنجليزية" ? `
+المستوى المطلوب:
+${englishLevel}
+
+المستوى الحالي:
+${englishCurrent}
+
+` : ""}
+
+المشروع / المجال:
+${project}
+
+تفاصيل / المشكلة:
+${details}
+
+أرغب في معرفة خطوات التسجيل.`;
+
+  document.getElementById("courseStep2").classList.remove("active");
+  document.getElementById("courseStep3").classList.add("active");
+
 });
+
 
 function sendCourseWhatsApp(){
- navigator.clipboard.writeText(courseMessage).then(()=>{
-  alert("تم نسخ الطلب. سيفتح WhatsApp، الصقي الرسالة وأرسليها.");
-  window.open(WA,"_blank");
- }).catch(()=>{
-  window.open(WA,"_blank");
- });
+
+  const encoded=
+    encodeURIComponent(courseMessage);
+
+  const generic=
+    "https://wa.me/message/BONEOI6EZJWOF1";
+
+  navigator.clipboard.writeText(courseMessage)
+  .catch(()=>{});
+
+  window.open(generic,"_blank");
+
 }
 
 
-/* SERVICES */
-let currentService="";
+/* ===== SERVICE ===== */
+
+let selectedService="";
+
 
 function openService(service){
- currentService=service;
 
- document.getElementById("serviceTitle").textContent=service;
- document.getElementById("s_service").value=service;
+  selectedService=service;
 
- document.getElementById("serviceForm").reset();
- document.getElementById("s_service").value=service;
+  document.getElementById("serviceTitle").textContent=
+    service;
 
- document.getElementById("sponsorFields").style.display="none";
- document.getElementById("academicFields").style.display="none";
+  document.getElementById("serviceForm").reset();
 
- if(service==="سبونسور Facebook / Instagram"){
-  document.getElementById("sponsorFields").style.display="block";
- }
+  document.getElementById("dynamicFields").innerHTML="";
 
- if(
-  service==="إعداد تقرير تربص" ||
-  service==="مذكرات تخرج / بحوث / تقارير تربص"
- ){
-  document.getElementById("academicFields").style.display="block";
- }
+  changeServiceFields();
 
- document.getElementById("serviceModal").classList.add("show");
+  document.getElementById("serviceModal").classList.add("show");
 }
+
+
+function fieldHTML(label,id,type="text",options=[]){
+
+  if(type==="textarea"){
+    return `
+      <div class="field full">
+        <label>${label}</label>
+        <textarea id="${id}" required></textarea>
+      </div>
+    `;
+  }
+
+  if(type==="select"){
+    return `
+      <div class="field full">
+        <label>${label}</label>
+        <select id="${id}" required>
+          <option value="">اختاري</option>
+          ${options.map(x=>`<option>${x}</option>`).join("")}
+        </select>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="field full">
+      <label>${label}</label>
+      <input id="${id}" type="${type}" required>
+    </div>
+  `;
+}
+
+
+function changeServiceFields(){
+
+  const box=document.getElementById("dynamicFields");
+
+  let html="";
+
+
+  if(selectedService==="سبونسور Facebook / Instagram"){
+
+    html+=fieldHTML(
+      "نوع المنتج أو الخدمة",
+      "s_product_type"
+    );
+
+    html+=fieldHTML(
+      "هدف الحملة",
+      "s_goal",
+      "select",
+      [
+        "زيادة التفاعل",
+        "الحصول على رسائل",
+        "المبيعات",
+        "زيارات للصفحة",
+        "زيارات للموقع",
+        "هدف آخر"
+      ]
+    );
+
+    html+=fieldHTML(
+      "الجمهور المستهدف",
+      "s_audience"
+    );
+
+    html+=fieldHTML(
+      "المناطق المستهدفة",
+      "s_locations"
+    );
+
+    html+=fieldHTML(
+      "ميزانية الإعلان",
+      "s_budget"
+    );
+
+    html+=fieldHTML(
+      "رابط الصفحة",
+      "s_page"
+    );
+
+    html+=fieldHTML(
+      "رابط المنشور / المنتج",
+      "s_post"
+    );
+
+    html+=fieldHTML(
+      "هل لديكِ صورة أو فيديو جاهز للإعلان؟",
+      "s_creative",
+      "select",
+      [
+        "نعم",
+        "لا"
+      ]
+    );
+
+    html+=fieldHTML(
+      "تفاصيل إضافية",
+      "s_details",
+      "textarea"
+    );
+  }
+
+
+  else if(selectedService==="صناعة منتج رقمي"){
+
+    html+=fieldHTML(
+      "نوع المنتج",
+      "s_product_type",
+      "select",
+      [
+        "Planner",
+        "Ebook",
+        "PDF",
+        "Worksheet",
+        "Quiz",
+        "Template",
+        "Interactive Product",
+        "Website / Landing Page",
+        "منتج آخر"
+      ]
+    );
+
+    html+=fieldHTML(
+      "المجال",
+      "s_field",
+      "select",
+      [
+        "تعليم",
+        "تسويق",
+        "أعمال",
+        "تنظيم",
+        "أطفال",
+        "صحة ولياقة",
+        "تطوير ذات",
+        "مجال آخر"
+      ]
+    );
+
+    html+=fieldHTML(
+      "لغة المنتج",
+      "s_language",
+      "select",
+      [
+        "العربية",
+        "English",
+        "Français",
+        "العربية + English",
+        "لغات أخرى"
+      ]
+    );
+
+    html+=fieldHTML(
+      "السوق المستهدف",
+      "s_market",
+      "select",
+      [
+        "الجزائر",
+        "السوق العربي",
+        "السوق الأجنبي",
+        "الجزائر + العربي",
+        "الجزائر + الأجنبي",
+        "العربي + الأجنبي"
+      ]
+    );
+
+    html+=fieldHTML(
+      "فكرة المنتج",
+      "s_idea",
+      "textarea"
+    );
+
+    html+=fieldHTML(
+      "تفاصيل إضافية",
+      "s_details",
+      "textarea"
+    );
+  }
+
+
+  else if(selectedService==="دراسة السوق والمنافسين والجمهور"){
+
+    html+=fieldHTML(
+      "نوع المنتج أو النشاط",
+      "s_product_type"
+    );
+
+    html+=fieldHTML(
+      "السوق المستهدف",
+      "s_market",
+      "select",
+      [
+        "السوق الجزائري",
+        "السوق العربي",
+        "السوق الأجنبي",
+        "الجزائري + العربي",
+        "الجزائري + الأجنبي",
+        "العربي + الأجنبي"
+      ]
+    );
+
+    html+=fieldHTML(
+      "الميزانية المتاحة",
+      "s_budget"
+    );
+
+    html+=fieldHTML(
+      "تفاصيل المشروع",
+      "s_details",
+      "textarea"
+    );
+  }
+
+
+  else if(selectedService==="شحن دولار"){
+
+    html+=fieldHTML(
+      "المبلغ المطلوب بالدولار",
+      "s_amount"
+    );
+
+    html+=fieldHTML(
+      "متى تحتاجين المبلغ؟",
+      "s_when"
+    );
+
+    html+=fieldHTML(
+      "تفاصيل إضافية",
+      "s_details",
+      "textarea"
+    );
+  }
+
+
+  else if(selectedService==="خطة تسويقية شهرية"){
+
+    html+=fieldHTML(
+      "نوع النشاط",
+      "s_activity"
+    );
+
+    html+=fieldHTML(
+      "رابط الصفحة",
+      "s_page"
+    );
+
+    html+=fieldHTML(
+      "الأهداف والتفاصيل",
+      "s_details",
+      "textarea"
+    );
+  }
+
+
+  else if(selectedService==="مذكرات تخرج / بحوث"){
+
+    html+=fieldHTML(
+      "عدد الصفحات",
+      "s_pages"
+    );
+
+    html+=fieldHTML(
+      "التخصص",
+      "s_major"
+    );
+
+    html+=fieldHTML(
+      "تفاصيل الطلب",
+      "s_details",
+      "textarea"
+    );
+  }
+
+
+  else if(selectedService==="إنشاء تقرير / مذكرة"){
+
+    html+=fieldHTML(
+      "الجامعة",
+      "s_university"
+    );
+
+    html+=fieldHTML(
+      "التخصص",
+      "s_major"
+    );
+
+    html+=fieldHTML(
+      "عنوان التقرير / المذكرة",
+      "s_title"
+    );
+
+    html+=fieldHTML(
+      "تفاصيل الطلب",
+      "s_details",
+      "textarea"
+    );
+  }
+
+
+  else if(selectedService==="إنشاء المواقع"){
+
+    html+=fieldHTML(
+      "نوع الموقع",
+      "s_site_type",
+      "select",
+      [
+        "Landing Page",
+        "موقع شركة",
+        "موقع خدمات",
+        "متجر إلكتروني",
+        "Portfolio",
+        "موقع شخصي",
+        "موقع معلوماتي",
+        "موقع تعليمي",
+        "نوع آخر"
+      ]
+    );
+
+    html+=fieldHTML(
+      "النشاط / المجال",
+      "s_activity"
+    );
+
+    html+=fieldHTML(
+      "رابط الصفحة أو الموقع الحالي إن وجد",
+      "s_page"
+    );
+
+    html+=fieldHTML(
+      "تفاصيل الموقع المطلوب",
+      "s_details",
+      "textarea"
+    );
+  }
+
+
+  else if(selectedService==="CV"){
+
+    html+=fieldHTML(
+      "التخصص / المجال",
+      "s_major"
+    );
+
+    html+=fieldHTML(
+      "لغة السيرة الذاتية",
+      "s_language",
+      "select",
+      [
+        "العربية",
+        "Français",
+        "English",
+        "العربية + Français",
+        "العربية + English"
+      ]
+    );
+
+    html+=fieldHTML(
+      "تفاصيل إضافية",
+      "s_details",
+      "textarea"
+    );
+  }
+
+
+  else if(selectedService==="Shopping من المواقع"){
+
+    html+=fieldHTML(
+      "رابط المنتج أو الموقع",
+      "s_link"
+    );
+
+    html+=fieldHTML(
+      "تفاصيل الطلب",
+      "s_details",
+      "textarea"
+    );
+  }
+
+
+  else if(selectedService==="خدمات الفريق"){
+
+    html+=fieldHTML(
+      "الخدمة المطلوبة",
+      "s_team_service",
+      "select",
+      [
+        "إدارة الطلبات",
+        "إدارة الصفحات",
+        "Affiliate Marketing",
+        "Voice Over",
+        "UGC",
+        "خياطة",
+        "CV",
+        "خدمات رقمية",
+        "خدمة أخرى"
+      ]
+    );
+
+    html+=fieldHTML(
+      "تفاصيل الطلب",
+      "s_details",
+      "textarea"
+    );
+  }
+
+
+  else if(selectedService==="خدمة أخرى"){
+
+    html+=fieldHTML(
+      "اشرحي لنا الطلب الذي تحتاجينه",
+      "s_details",
+      "textarea"
+    );
+  }
+
+
+  box.innerHTML=html;
+}
+
 
 document.getElementById("serviceForm").addEventListener("submit",function(e){
- e.preventDefault();
 
- let message=
-`🌷 طلب خدمة من DiGitalna
+  e.preventDefault();
 
-الخدمة: ${currentService}
+  const fullname=
+    document.getElementById("s_fullname").value.trim();
 
-الاسم: ${v("s_name")}
-رقم التواصل: ${v("s_phone")}
-الولاية: ${v("s_wilaya")}
+  let message=
+`طلب حجز خدمة - DiGitalna
 
+الخدمة:
+${selectedService}
+
+الاسم واللقب:
+${fullname}
 `;
 
- if(currentService==="سبونسور Facebook / Instagram"){
+
+  const fields=
+    document.querySelectorAll(
+      "#dynamicFields input, #dynamicFields select, #dynamicFields textarea"
+    );
+
+
+  fields.forEach(field=>{
+
+    if(field.value.trim()){
+
+      const label=
+        field.parentElement.querySelector("label")?.innerText ||
+        "تفاصيل";
+
+      message+=
+`\n${label}:
+${field.value.trim()}
+`;
+
+    }
+
+  });
+
+
   message+=
-`📣 تفاصيل الحملة:
+`\nأرغب في معرفة خطوات إتمام الطلب.`;
 
-نوع المنتج/الخدمة: ${v("sp_product")}
-السعر: ${v("sp_price")}
-هدف الحملة: ${v("sp_goal")}
-الجمهور المستهدف: ${v("sp_audience")}
-المناطق المستهدفة: ${v("sp_location")}
-ميزانية الإعلان: ${v("sp_budget")}
-رابط الصفحة: ${v("sp_page")}
-رابط المنشور/المنتج: ${v("sp_post")}
-الكرياتيف: ${v("sp_creative")}
+  navigator.clipboard.writeText(message)
+    .catch(()=>{});
 
-`;
- }
+  window.open(
+    "https://wa.me/message/BONEOI6EZJWOF1",
+    "_blank"
+  );
 
- if(
- currentService==="إعداد تقرير تربص" ||
- currentService==="مذكرات تخرج / بحوث / تقارير تربص"
- ){
-  message+=
-`🎓 تفاصيل العمل:
+  closeModal("serviceModal");
 
-نوع العمل: ${v("ac_type")}
-التخصص: ${v("ac_major")}
-الجامعة: ${v("ac_university")}
-المستوى: ${v("ac_level")}
-عدد الصفحات: ${v("ac_pages")}
-اللغة: ${v("ac_language")}
-الموضوع: ${v("ac_topic")}
-تعليمات الأستاذ: ${v("ac_requirements")}
-موعد التسليم: ${v("ac_deadline")}
-
-`;
- }
-
- message+=
-`رابط الصفحة/المشروع: ${v("s_link")}
-
-تفاصيل الطلب:
-${v("s_details")}
-
-الهدف:
-${v("s_goal")}
-
-أوافق على شروط الخدمة وأرغب في تأكيد التفاصيل.`;
-
- navigator.clipboard.writeText(message).then(()=>{
-  alert("تم نسخ الطلب. سيفتح WhatsApp، الصقي الرسالة وأرسليها.");
-  window.open(WA,"_blank");
- }).catch(()=>{
-  window.open(WA,"_blank");
- });
 });
 
 
-/* SUGGEST */
-function openSuggest(){
- document.getElementById("suggestForm").reset();
- document.getElementById("suggestModal").classList.add("show");
+/* ===== SUGGESTION ===== */
+
+function openSuggestion(){
+
+  document.getElementById("suggestionText").value="";
+
+  document
+    .getElementById("suggestionModal")
+    .classList.add("show");
 }
 
-document.getElementById("suggestForm").addEventListener("submit",function(e){
- e.preventDefault();
 
- const msg=
-`💡 اقتراح دورة / خدمة
+document.getElementById("suggestionForm").addEventListener("submit",function(e){
 
-الاسم: ${v("g_name")}
-رقم التواصل: ${v("g_phone")}
-الولاية: ${v("g_wilaya")}
-المشروع: ${v("g_project")}
+  e.preventDefault();
 
-الاحتياج:
-${v("g_need")}
+  const suggestion=
+    document.getElementById("suggestionText")
+    .value
+    .trim();
 
-الرابط:
-${v("g_link")}
+  const message=
+`اقتراح دورة أو خدمة - DiGitalna
 
-تفاصيل إضافية:
-${v("g_notes")}`;
+الاقتراح / الطلب:
+${suggestion}`;
 
- navigator.clipboard.writeText(msg).then(()=>{
-  alert("تم نسخ الاقتراح. سيفتح WhatsApp، الصقي الرسالة وأرسليها.");
-  window.open(WA,"_blank");
- }).catch(()=>{
-  window.open(WA,"_blank");
- });
+  navigator.clipboard.writeText(message)
+    .catch(()=>{});
+
+  window.open(
+    "https://wa.me/message/BONEOI6EZJWOF1",
+    "_blank"
+  );
+
+  closeModal("suggestionModal");
+
 });
 
 
-/* TEAM */
-function openTeam(type){
- currentService=type;
- openService(type);
- document.getElementById("s_details").value=
- "نوع الطلب: "+type+"\n\nأرغب في توضيح التفاصيل هنا:";
+/* ===== COURSE DETAILS ===== */
+
+const courseDetailsData={
+
+  marketing:{
+    title:"تفاصيل دورة التسويق وصناعة المحتوى والإعلانات الممولة",
+    content:`
+      <div class="notice">
+        <strong>السعر: 3500 دج</strong><br>
+        دورة مسجلة على Telegram مع تطبيقات ومتابعة شخصية عبر WhatsApp.
+      </div>
+
+      <div class="condition-box">
+        <h4>طريقة الدراسة</h4>
+        <ul>
+          <li>دروس مسجلة على Telegram.</li>
+          <li>20+ درس.</li>
+          <li>شرح بالصوت والكتابة.</li>
+          <li>تطبيقات عملية.</li>
+          <li>متابعة شخصية عبر WhatsApp.</li>
+          <li>قناة للأفكار.</li>
+        </ul>
+      </div>
+
+      <div class="condition-box">
+        <h4>تحتوي على</h4>
+        <ul>
+          <li>دراسة السوق والجمهور والمنافسين.</li>
+          <li>الاستراتيجية التسويقية واستراتيجية المحتوى.</li>
+          <li>الهوية الرقمية والـ Branding.</li>
+          <li>الأفكار والـ Hooks والسكريبتات.</li>
+          <li>كتابة المحتوى التسويقي والتفاعلي.</li>
+          <li>الخوارزميات وSEO والترندات.</li>
+          <li>Content Marketing وUGC وAffiliate Marketing.</li>
+          <li>الإعلانات الممولة وتحليل الحملات.</li>
+          <li>تقديم الخدمات والعمل Freelance.</li>
+        </ul>
+      </div>
+    `
+  },
+
+  digital:{
+    title:"تفاصيل دورة صناعة المنتجات الرقمية بالذكاء الاصطناعي وتسويقها",
+    content:`
+      <div class="notice">
+        <strong>السعر: 3000 دج</strong><br>
+        من فكرة المنتج إلى إنشائه وتجهيزه وتسويقه.
+      </div>
+
+      <div class="condition-box">
+        <h4>ماذا ستتعلمين؟</h4>
+        <ul>
+          <li>فهم المنتجات الرقمية وأنواعها.</li>
+          <li>اختيار المنتج والمجال والـ Niche.</li>
+          <li>دراسة السوق والسوق الأجنبي.</li>
+          <li>إنشاء المنتجات بالذكاء الاصطناعي.</li>
+          <li>Landing Pages.</li>
+          <li>تحويل المواقع والمنتجات إلى تطبيقات.</li>
+          <li>تجهيز وتسليم المنتج للعميل.</li>
+          <li>اختيار المنصات المناسبة.</li>
+          <li>كتابة المحتوى والتسويق للمنتج.</li>
+          <li>أساسيات الدفع والبيع.</li>
+        </ul>
+      </div>
+    `
+  },
+
+  web:{
+    title:"تفاصيل دورة إنشاء المواقع",
+    content:`
+      <div class="notice">
+        <strong>السعر: 4200 دج</strong><br>
+        تحت إشراف أستاذة متخصصة في الإعلام الآلي والذكاء الاصطناعي.
+      </div>
+
+      <div class="condition-box">
+        <h4>ماذا ستتعلمين؟</h4>
+        <ul>
+          <li>HTML بشكل شامل.</li>
+          <li>CSS والتنسيق العملي.</li>
+          <li>أساسيات JavaScript.</li>
+          <li>المواقع المتجاوبة.</li>
+          <li>Landing Pages.</li>
+          <li>مواقع الشركات والخدمات.</li>
+          <li>المتاجر الإلكترونية.</li>
+          <li>Portfolio والمواقع الشخصية.</li>
+          <li>ربط الدومين ونشر الموقع.</li>
+          <li>استخدام الذكاء الاصطناعي في البرمجة.</li>
+          <li>فهم وتعديل الكود.</li>
+          <li>مشاريع تطبيقية ومشروع نهائي.</li>
+        </ul>
+      </div>
+    `
+  },
+
+  ads:{
+    title:"تفاصيل دورة الإعلانات الممولة والوساطة الرقمية",
+    content:`
+      <div class="notice">
+        <strong>السعر: 2000 دج</strong><br>
+        دورة عملية يمكن البدء فيها من الهاتف.
+      </div>
+
+      <div class="condition-box">
+        <h4>ماذا ستتعلمين؟</h4>
+        <ul>
+          <li>أنواع الإعلانات وأهداف الحملات.</li>
+          <li>Facebook وInstagram وTikTok Ads.</li>
+          <li>اختيار الجمهور والميزانية.</li>
+          <li>إعداد الـ Creatives وكتابة الإعلان.</li>
+          <li>تحليل نتائج الحملات.</li>
+          <li>تسعير خدمة الإعلانات.</li>
+          <li>أساسيات Visa والشراء أونلاين.</li>
+          <li>الوساطة الرقمية ومجالاتها.</li>
+        </ul>
+      </div>
+    `
+  },
+
+  english:{
+    title:"تفاصيل دورة اللغة الإنجليزية",
+    content:`
+      <div class="notice">
+        <strong>3500 دج لكل مستوى</strong><br>
+        الدورة أونلاين عبر Google Meet، وتبدأ باكتمال الفوج.
+      </div>
+
+      <div class="condition-box">
+        <h4>المستويات</h4>
+        <ul>
+          <li>A1</li>
+          <li>A2</li>
+          <li>B1</li>
+          <li>B2</li>
+          <li>C1</li>
+          <li>C2</li>
+        </ul>
+      </div>
+
+      <div class="condition-box">
+        <h4>ماذا تحتوي؟</h4>
+        <ul>
+          <li>14 ساعة شهريًا.</li>
+          <li>دروس وتمارين وأنشطة.</li>
+          <li>فيديوهات تعليمية.</li>
+          <li>تصحيح ومتابعة.</li>
+          <li>تفاعل مع الأستاذة.</li>
+          <li>الدراسة ضمن مجموعات.</li>
+        </ul>
+      </div>
+
+      <div class="condition-box">
+        <h4>شروط الدورة</h4>
+        <ul>
+          <li>توفر اتصال جيد بالإنترنت.</li>
+          <li>الالتزام بالحضور.</li>
+        </ul>
+      </div>
+    `
+  }
+
+};
+
+
+function courseDetails(key){
+
+  const data=courseDetailsData[key];
+
+  document.getElementById("detailsTitle").textContent=
+    data.title;
+
+  document.getElementById("detailsContent").innerHTML=
+    data.content;
+
+  document.getElementById("detailsModal").classList.add("show");
 }
 
 
-/* REVIEWS */
+/* ===== REVIEWS ===== */
+
 const reviews=[
+
 "واه بزاف الحمد لله راكي تشوفي بعينك النتائج مهمة. نخدم بنصائحك وبارك الله فيك.",
+
 "انا بديت الدورة وهي جاتني الخدمة ما قدرتش ننشر بصح وعد بإذن الله ندير وقت وننشر ونطبق كامل الدروس.",
+
 "نعم جاب نتيجة يعطيك الصحة.",
+
 "كنت 0 في هذا المجال، وبديت نفهم كيفاش نستعمل التريند المرتبط بالمجال.",
+
 "ما شاء الله والحمد لله، الريل طلع والستوري طلعت وجاتني مسجات وما لحقتش نرد.",
+
 "صديقتي هزيت الطريقة ومازال ما نفذتش، كان عندي خمول وفقدان شغف، ومنين بديت نتعامل معاك رجعت لنشاطي.",
+
 "تعيشي غير نتي لي طلعلي المودال، فهميني في الريلز والقصة واش ندير فيها ونقدر نعاود نحط نفس المنتوج؟",
+
 "يا لهوي 🙂 سعر الدورة حقها أكثر من مليون ياختي.",
+
 "يمكن انتي هي دعوة أمي المستجابة، وزيد بزاف ناس يبعثولي يقولولي خدمتك مليحة ويدعيو لي حتى نبكي."
+
 ];
+
 
 let reviewIndex=0;
 
-function showReview(){
- document.getElementById("reviewText").textContent=reviews[reviewIndex];
+function renderReview(){
+
+  document.getElementById("reviewText").textContent=
+    reviews[reviewIndex];
+
+  document.getElementById("reviewDots").innerHTML=
+    reviews.map((_,i)=>
+      `<span class="review-dot ${i===reviewIndex?"active":""}"></span>`
+    ).join("");
 }
-function nextReview(){
- reviewIndex=(reviewIndex+1)%reviews.length;
- showReview();
-}
-function prevReview(){
- reviewIndex=(reviewIndex-1+reviews.length)%reviews.length;
- showReview();
-}
-showReview();
-setInterval(nextReview,5000);
 
 
-function v(id){
- const el=document.getElementById(id);
- return el ? el.value.trim() : "";
-}
+renderReview();
 
-document.querySelectorAll(".modal").forEach(m=>{
- m.addEventListener("click",function(e){
-  if(e.target===m)m.classList.remove("show");
- });
+
+setInterval(()=>{
+
+  reviewIndex++;
+
+  if(reviewIndex>=reviews.length){
+    reviewIndex=0;
+  }
+
+  renderReview();
+
+},4500);
+
+
+/* ===== REVEAL ANIMATION ===== */
+
+const observer=
+  new IntersectionObserver(
+    entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold:.12
+    }
+  );
+
+
+document
+  .querySelectorAll(".reveal")
+  .forEach(el=>observer.observe(el));
+
+
+/* ===== CLOSE MODAL BY BACKDROP ===== */
+
+document
+  .querySelectorAll(".modal")
+  .forEach(modal=>{
+
+    modal.addEventListener("click",function(e){
+
+      if(e.target===modal){
+        modal.classList.remove("show");
+      }
+
+    });
+
+  });
+
+
+/* ===== ESC KEY ===== */
+
+document.addEventListener("keydown",function(e){
+
+  if(e.key==="Escape"){
+
+    document
+      .querySelectorAll(".modal.show")
+      .forEach(m=>m.classList.remove("show"));
+
+    closeMenu();
+
+  }
+
 });
+
 </script>
 
 </body>
